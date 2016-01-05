@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity
             public void onResponse(Response<Users> response, Retrofit retrofit)
             {
                 Users s = response.body();
-                s.getAddress();
-                s.getPhone();
-                s.getId();
+         //       s.getAddress();
+         //       s.getPhone();
+          //      s.getId();
                 Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
             }
 

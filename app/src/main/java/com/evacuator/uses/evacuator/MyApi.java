@@ -2,11 +2,12 @@ package com.evacuator.uses.evacuator;
 
 import retrofit.Call;
 import retrofit.http.GET;
+import retrofit.http.POST;
 import retrofit.http.Query;
 
 public interface MyApi
 {
-    @GET("order/create?brand_id={brand_id}&model_id={model_id}&receive_date={receive_date}&weight={weight}&blocked_wheels={blocked_wheels}&blocked_wheels_cnt={blocked_wheels_cnt}" +
+    @POST("order/create?brand_id={brand_id}&model_id={model_id}&receive_date={receive_date}&weight={weight}&blocked_wheels={blocked_wheels}&blocked_wheels_cnt={blocked_wheels_cnt}" +
             "&blocked_steering_wheel={blocked_steering_wheel}&low_landing={low_landing}&phone={phone}&car_type={car_type}&gps_longitude={gps_longitude}&gps_latitude={gps_latitude}&" +
             "address={address}&manipulator_required={manipulator_required}&destination_address={destination_address}&comment={comment}&" +
             "from_website={from_website}&commission={commission}&payment_type={payment_type}&agent_commission={agent_commission}&created_at={created_at}&updated_at={updated_at}&price={price}" +
@@ -27,7 +28,14 @@ public interface MyApi
                          @Query("is_payed") String is_payed,
                          @Query("from_agent") String from_agent, @Query("additional_services") String additional_services);
 
-    @GET("order/create?brand_id=null&model_id=null&receive_date=null&weight=null&blocked_wheels=null&blocked_wheels_cnt=null" +
+
+
+    ///
+    //
+//      аксес токен возможно надо убрать
+//
+    //
+    @GET("order/create?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&brand_id=null&model_id=null&receive_date=null&weight=null&blocked_wheels=null&blocked_wheels_cnt=null" +
             "&blocked_steering_wheel=null&low_landing=null&phone=null&car_type=null&gps_longitude=null&gps_latitude=null&" +
             "address=null&manipulator_required=null&destination_address=null&comment=null&" +
             "from_website=null&commission=null&payment_type=null&agent_commission=null&created_at=null&updated_at=null&price=null" +

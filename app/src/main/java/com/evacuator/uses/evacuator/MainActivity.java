@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
                 .build();
 
         MyApi api = retrofit.create(MyApi.class);
-        Call<Users> usersCall = api.getOrder("1","123","12123");
+        Call<Users> usersCall = api.getOrder();
         usersCall.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Response<Users> response, Retrofit retrofit)

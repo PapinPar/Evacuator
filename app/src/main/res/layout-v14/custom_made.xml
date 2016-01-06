@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#939393">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/tollbar"/>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RENAULT"
+            android:id="@+id/textView35"
+            android:textSize="16dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/colorTextGeneral" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="тр234мк56"
+            android:id="@+id/textView36"
+            android:textSize="14dp"
+            android:layout_alignBottom="@+id/textView35"
+            android:layout_toRightOf="@+id/textView35"
+            android:layout_toEndOf="@+id/textView35"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/colorTextFont" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/imageView3"
+            android:layout_below="@+id/textView35"
+            android:layout_alignLeft="@+id/textView35"
+            android:layout_alignStart="@+id/textView35"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/icon_time" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/imageView4"
+            android:layout_below="@+id/imageView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/icon_place" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="29 Декабря, 20:30"
+            android:id="@+id/textView37"
+            android:layout_alignBottom="@+id/imageView3"
+            android:layout_toRightOf="@+id/imageView3"
+            android:layout_toEndOf="@+id/imageView3"
+            android:textSize="16dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/colorTextFont" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Комсомольский пр-т, 65А"
+            android:id="@+id/textView38"
+            android:layout_alignBottom="@+id/imageView4"
+            android:layout_toRightOf="@+id/imageView4"
+            android:layout_toEndOf="@+id/imageView4"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextFont" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_weight="0.04"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Время в пути, мин"
+                android:textColor="@color/colorTextFont" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="24dp"
+                android:text="25:17"
+                android:textColor="@color/colorTextGeneral" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_weight="0.08"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:layout_marginTop="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Пробег, км"
+                android:textSize="16dp"
+                android:id="@+id/textView39"
+                android:textColor="@color/colorTextFont" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="24dp"
+                android:text="15"
+                android:textColor="@color/colorTextGeneral" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="СТОИМОСТЬ"
+            android:id="@+id/textView40"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextFont" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="2750 Р"
+            android:id="@+id/textView41"
+            android:layout_gravity="center_horizontal"
+            android:textSize="32dp"
+            android:textColor="@color/colorTextGeneral" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Оцените поездку"
+            android:id="@+id/textView42"
+            android:layout_gravity="center_horizontal"
+            android:textSize="28dp"
+            android:textColor="@color/colorTextFont" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:rating="4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Оплатить картой"
+            android:id="@+id/button3"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_button"
+            android:textColor="#ffffff"
+            android:theme="@android:style/Theme.Dialog"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Закрыть"
+            android:id="@+id/textView43"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:textSize="18dp"
+            android:textColor="@color/colorTextFont" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -105,7 +105,11 @@ public class OrderNewActivity extends AppCompatActivity {
         MyApi api = retrofit.create(MyApi.class);
         //  Call<Users> usersCall = api.getOrder(null,null,null,null,null,null,null,null,"+380638367925","1",null,null,"Украина, Харьков, проспект Людвика Свободы ",null,null,
         //     null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-        Call<Users> usersCall = api.get();
+        Users user = new Users();
+        user.setAddress("");
+        user.setPhone("");
+        user.setCarType(1);
+        Call<Users> usersCall = api.get(user);
         usersCall.enqueue(new Callback<Users>() {
             @Override
             public void onResponse(Response<Users> response, Retrofit retrofit) {

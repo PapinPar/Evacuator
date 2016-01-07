@@ -1,8 +1,12 @@
 package com.evacuator.uses.evacuator;
 
 import retrofit.Call;
+import retrofit.http.Body;
+import retrofit.http.Field;
+import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 public interface MyApi
@@ -35,14 +39,8 @@ public interface MyApi
 //      аксес токен возможно надо убрать
 //
     //
-    @GET("order/create?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&brand_id=null&model_id=null&receive_date=null&weight=null&blocked_wheels=null&blocked_wheels_cnt=null" +
-            "&blocked_steering_wheel=null&low_landing=null&phone=null&car_type=null&gps_longitude=null&gps_latitude=null&" +
-            "address=null&manipulator_required=null&destination_address=null&comment=null&" +
-            "from_website=null&commission=null&payment_type=null&agent_commission=null&created_at=null&updated_at=null&price=null" +
-            "&ukey=null&status=null&tariff_found=null&tariff_name=null&tariff_price_loading=null&tariff_price_km=null" +
-            "&tariff_price_minute=null&tariff_price_blocked_wheel=null&tariff_price_blocked_steering_wheel=null" +
-            "&tariff_included_mileage=null&tariff_discount_website=null&" +
-            "id=null&distance=null&current_user_id=null&status_name=null&is_cancelable=null&is_payed=null&from_agent=null&additional_services=null")
-    Call<Users>get();
+    @POST("order/create?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS")
+    Call<Users>get(@Body Users users);
+
 
 }

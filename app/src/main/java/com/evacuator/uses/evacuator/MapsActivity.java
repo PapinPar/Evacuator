@@ -134,10 +134,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         map.setMyLocationEnabled(true);
-        map.getUiSettings().setZoomControlsEnabled(false);
-        map.getUiSettings().setCompassEnabled(false);
-        map.getUiSettings().setMapToolbarEnabled(false);
-        map.getUiSettings().setRotateGesturesEnabled(false);
+        map.getUiSettings().setAllGesturesEnabled(true);
+       // map.getUiSettings().setZoomControlsEnabled(false);
+        //map.getUiSettings().setCompassEnabled(false);
+        //map.getUiSettings().setMapToolbarEnabled(false);
+        //map.getUiSettings().setRotateGesturesEnabled(false);
     }
     public Location getLocation() {
         // Get the location manager

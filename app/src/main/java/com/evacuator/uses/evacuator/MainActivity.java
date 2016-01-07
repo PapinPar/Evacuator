@@ -53,39 +53,6 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
-        request();
-
     }
 
-    private void request()
-    {
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://app.bb-evacuator.ru/api/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        MyApi api = retrofit.create(MyApi.class);
-      //  Call<Users> usersCall = api.getOrder(null,null,null,null,null,null,null,null,"+380638367925","1",null,null,"Украина, Харьков, проспект Людвика Свободы ",null,null,
-           //     null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-        Call<Users>usersCall = api.get();
-        usersCall.enqueue(new Callback<Users>() {
-            @Override
-            public void onResponse(Response<Users> response, Retrofit retrofit)
-            {
-                Users s = response.body();
-         //       s.getAddress();
-         //       s.getPhone();
-          //      s.getId();
-                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Throwable t)
-            {
-                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }

@@ -11,14 +11,6 @@
         android:layout_height="100dp"
         android:background="@color/colorAccent">
 
-        <fragment
-            android:id="@+id/autocomplete_fragment"
-            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/list"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout
@@ -48,6 +40,18 @@
             android:onClick="onClick" />
 
     </FrameLayout>
+
+    <fragment
+        android:id="@+id/autocomplete_fragment"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toolbar_actionbar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
 
 </RelativeLayout>

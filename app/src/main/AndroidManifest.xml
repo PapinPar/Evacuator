@@ -54,6 +54,15 @@
         <activity android:name=".DestinationActivity">
 
         </activity>
+        <activity android:name=".OrderNewActivity">
+
+        </activity>
+        <activity android:name=".OrderDetailsActivity">
+
+        </activity>
+        <activity android:name=".OrderInfoActivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -61,7 +61,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         mapFragment.getMapAsync(this);
         Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mActionBarToolbar);
-        getSupportActionBar().setTitle("Откуда вас забрать?");
+        getSupportActionBar().setTitle("Куда вас доставить?");
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.autocomplete_fragment);

@@ -68,6 +68,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
         Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mActionBarToolbar);
+        getSupportActionBar().setTitle("Откуда вас забрать?");
+        getSupportActionBar().setTitle("Выбирете ваше положение");
 
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.autocomplete_fragment);
@@ -212,7 +214,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Intent intent = new Intent(this,DestinationActivity.class);
         intent.putExtra("longitude",""+myPlace.getLatLng().longitude);
         intent.putExtra("latitude",""+myPlace.getLatLng().latitude);
-        intent.putExtra("address",""+myPlace.getAddress());
+        intent.putExtra("address",""+myPlace.getName());
         intent.putExtra("id",""+myPlace.getId());
         startActivity(intent);
     }

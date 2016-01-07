@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_order_new);
         date = (TextView)findViewById(R.id.date);
         date_invis = (TextView)findViewById(R.id.date_insiv);
         date.setOnClickListener(new View.OnClickListener() {

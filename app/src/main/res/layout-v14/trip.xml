@@ -1,229 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="4">
 
-    <RelativeLayout
+    <include
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.6">
+        android:layout_height="45dp"
+        layout="@layout/tollbar"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/relativeLayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_weight="0.01">
 
-            <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:id="@+id/imageView2"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_margin="30dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="№ заказа:"
-                android:id="@+id/textView17"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/imageView2"
-                android:layout_toEndOf="@+id/imageView2"
-                android:layout_marginTop="25dp"
-                android:textSize="14dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Такси:"
-                android:id="@+id/textView18"
-                android:layout_below="@+id/textView17"
-                android:layout_alignLeft="@+id/textView17"
-                android:layout_alignStart="@+id/textView17"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Водитель:"
-                android:id="@+id/textView19"
-                android:layout_below="@+id/textView18"
-                android:layout_alignLeft="@+id/textView18"
-                android:layout_alignStart="@+id/textView18"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Авто:"
-                android:id="@+id/textView20"
-                android:layout_below="@+id/textView19"
-                android:layout_alignLeft="@+id/textView19"
-                android:layout_alignStart="@+id/textView19"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4215154"
-                android:id="@+id/textView21"
-                android:layout_above="@+id/textView18"
-                android:layout_toRightOf="@+id/textView17"
-                android:layout_toEndOf="@+id/textView17"
-                android:layout_marginLeft="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Командир"
-                android:id="@+id/textView22"
-                android:layout_alignTop="@+id/textView18"
-                android:layout_toRightOf="@+id/textView18"
-                android:layout_toEndOf="@+id/textView18"
-                android:layout_marginLeft="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Анатолий"
-                android:id="@+id/textView23"
-                android:layout_above="@+id/textView20"
-                android:layout_toRightOf="@+id/textView19"
-                android:layout_toEndOf="@+id/textView19"
-                android:layout_marginLeft="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Черный Nissan(x0001xx)"
-                android:id="@+id/textView24"
-                android:layout_alignBottom="@+id/imageView2"
-                android:layout_toRightOf="@+id/textView20"
-                android:layout_toEndOf="@+id/textView20"
-                android:layout_marginLeft="10dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/relativeLayout"
-            android:gravity="center_horizontal|bottom">
+            android:layout_weight="2.8"
+            android:weightSum="1">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Тариф:"
-                android:id="@+id/textView25"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Время подачи:"
-                android:id="@+id/textView26"
-                android:layout_below="@+id/textView25"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="16dp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:background="@drawable/shape_image"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_weight="1.2">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Время поездки:"
-                android:id="@+id/textView27"
-                android:layout_below="@+id/textView26"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Время прибытия:"
-                android:id="@+id/textView28"
-                android:layout_below="@+id/textView27"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Стоимость:"
-                android:id="@+id/textView29"
-                android:layout_below="@+id/textView28"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:textSize="16dp"
-                android:layout_marginBottom="25dp" />
-
+                android:text="№ заказа: 4215154"
+                android:layout_marginLeft="5dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="x3"
-                android:id="@+id/textView30"
-                android:layout_above="@+id/textView26"
-                android:layout_toRightOf="@+id/textView25"
-                android:layout_toEndOf="@+id/textView25"
                 android:textSize="16dp"
-                android:layout_marginLeft="10dp" />
-
+                android:text="Такси: Командир"
+                android:layout_marginLeft="5dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="16:20"
-                android:id="@+id/textView31"
-                android:layout_above="@+id/textView27"
-                android:layout_toRightOf="@+id/textView26"
-                android:layout_toEndOf="@+id/textView26"
                 android:textSize="16dp"
-                android:layout_marginLeft="10dp" />
+                android:text="Водитель: Анатолий"
+                android:layout_marginLeft="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Авто: Черный Nissan (x0001xx)"
+                android:layout_marginLeft="5dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal|bottom"
+            android:layout_weight="1">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="00:10:01"
-                android:id="@+id/textView32"
-                android:layout_below="@+id/textView31"
-                android:layout_toRightOf="@+id/textView27"
-                android:layout_toEndOf="@+id/textView27"
-                android:layout_marginLeft="10dp" />
-
+                android:textSize="18dp"
+                android:text="Тариф: х3"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="16:30"
-                android:id="@+id/textView33"
-                android:layout_above="@+id/textView29"
-                android:layout_toRightOf="@+id/textView28"
-                android:layout_toEndOf="@+id/textView28"
-                android:layout_marginLeft="10dp" />
-
+                android:textSize="18dp"
+                android:text="Время подачи: 16:20"
+                android:layout_marginTop="5dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="600руб."
-                android:id="@+id/textView34"
-                android:layout_alignBottom="@+id/textView29"
-                android:layout_toRightOf="@+id/textView29"
-                android:layout_toEndOf="@+id/textView29"
-                android:layout_marginLeft="10dp" />
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-</RelativeLayout>
+                android:textSize="18dp"
+                android:text="Время поездки: 00:10:01"
+                android:layout_marginTop="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Время прибытия: 16:30"
+                android:layout_marginTop="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Стоимость: 600руб."
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

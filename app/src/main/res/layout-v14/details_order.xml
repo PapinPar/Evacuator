@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="8"
+    android:background="#afafaf">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/tollbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="2"
+        android:weightSum="6"
+        android:background="@color/colorTextButton">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.1"
+            android:weightSum="4">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:background="@mipmap/icon_1"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:background="@mipmap/icon_2"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:background="@mipmap/icon_3"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:background="@mipmap/icon_4"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:weightSum="4"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextFont"
+                android:textSize="20dp"
+                android:text="Нужен манипулятор"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextFont"
+                android:textSize="20dp"
+                android:text="Низкая посадка"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextFont"
+                android:textSize="20dp"
+                android:text="Заблокирован руль"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextFont"
+                android:textSize="20dp"
+                android:text="Заблокированные колеса"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:weightSum="4">
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switch1"
+                android:checked="true"
+                android:layout_weight="1" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switch2"
+                android:checked="false"
+                android:layout_weight="1" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/switch3"
+                android:checked="true"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/spinner2"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="#dddddd"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="0.2">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTextButton"
+        android:layout_weight="2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/colorTextFont"
+            android:textSize="18dp"
+            android:text="Примечания"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="#dddddd"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="0.2">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_weight="1"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextFont"
+            android:text="ПОГРУЗКА/РАЗГРУЗКА"
+            android:textSize="18dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="0.5"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32dp"
+            android:textColor="@color/colorTextGeneral"
+            android:text="1800 Р"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="далее 1км.(22 руб.) + 1 мин.(12 руб.)"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.5"
+            android:textColor="@color/colorTextGeneral" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#dddddd"
+        android:layout_marginTop="1dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Оформить заказ"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:id="@+id/button2"
+            android:theme="@android:style/Theme.Dialog"
+            android:background="@drawable/shape_button"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorTextButton"
+            android:layout_weight="0.01" />
+
+
+
+    </LinearLayout>
+</LinearLayout>

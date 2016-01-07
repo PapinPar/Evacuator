@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/tollbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.05"
+        android:weightSum="1"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Погрузка / разгрузка"
+                android:id="@+id/textView44"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorTextGeneral" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Базовая стоимость"
+                android:id="@+id/textView45"
+                android:textSize="16dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+            android:gravity="center_vertical|end">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1800 Р"
+                android:id="@+id/textView46"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/colorTextGeneral" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.05"
+        android:weightSum="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Пробег"
+                android:id="@+id/textView47"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorTextGeneral" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 км ч 12 Р"
+                android:id="@+id/textView48"
+                android:textSize="16dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+            android:gravity="center_vertical|end">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120 Р"
+                android:id="@+id/textView49"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/colorTextGeneral" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.05"
+        android:weightSum="1">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Время"
+                android:id="@+id/textView50"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorTextGeneral" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="28 мин х 12 Р (с учетом пробок)"
+                android:id="@+id/textView51"
+                android:textSize="16dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+            android:gravity="center_vertical|end">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="330 Р"
+                android:id="@+id/textView52"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/colorTextGeneral" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.15"
+        android:weightSum="1"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ДОПОЛНИТЕЛЬНО"
+                android:id="@+id/textView53"
+                android:layout_marginLeft="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Блокировка колес"
+                android:id="@+id/textView54"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorTextGeneral"
+                android:layout_marginTop="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1 колесо"
+                android:id="@+id/textView55"
+                android:textSize="16dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+            android:gravity="center_vertical|end">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500 Р"
+                android:id="@+id/textView56"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/colorTextGeneral" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.05"
+        android:weightSum="1"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.70"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ИТОГО"
+                android:id="@+id/textView57"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorTextGeneral" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+            android:gravity="center_vertical|end">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2750 Р"
+                android:id="@+id/textView5"
+                android:textSize="18dp"
+                android:layout_marginRight="15dp"
+                android:textColor="@color/colorTextGeneral" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Стоимость может изменяться в большую или меньшую сторону в соответствии с пробегом и затраченным временем"
+            android:textSize="14dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

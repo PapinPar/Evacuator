@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="@color/colorTextFont">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/tollbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="#e8e8e8">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="1dp"
+        android:background="@color/colorTextButton"
+        android:layout_weight="0.01">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:inputType="phone"
+            android:textSize="20dp"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:hint="Введите номер вашего телефона"
+            android:paddingLeft="10dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="1dp"
+        android:background="@color/colorTextButton"
+        android:layout_weight="0.01">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:inputType="phone"
+            android:textSize="20dp"
+            android:ems="10"
+            android:id="@+id/editText1"
+            android:hint="Код из SMS"
+            android:paddingLeft="10dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:background="#e8e8e8"
+        android:layout_marginTop="1dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_height="45dp"
+            android:id="@+id/imageButton"
+            android:textSize="20dp"
+            android:text="Получить код"
+            android:gravity="center"
+            style="@android:style/Theme.Dialog"
+            android:textColor="@color/colorTextButton"
+            android:background="@drawable/shape_button"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:background="#e8e8e8"
+        android:visibility="visible">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Согласен с "
+            android:textSize="16dp"
+            android:id="@+id/checkBox5"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Лицензионным соглашением"
+            android:textSize="16dp"
+            android:id="@+id/textView14"
+            android:textIsSelectable="false"
+            android:singleLine="false"
+            android:phoneNumber="false"
+            android:password="false"
+            android:theme="@android:style/Animation.Toast"
+            android:textColor="#0900bc"
+            android:gravity="center_vertical"
+            android:layout_alignBaseline="@+id/checkBox5"
+            android:layout_alignBottom="@+id/checkBox5"
+            android:layout_toRightOf="@+id/checkBox5"
+            android:layout_toEndOf="@+id/checkBox5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="и "
+            android:textSize="16dp"
+            android:id="@+id/textView15"
+            android:layout_alignTop="@+id/textView16"
+            android:layout_toLeftOf="@+id/textView16"
+            android:layout_toStartOf="@+id/textView16"
+            android:layout_marginRight="3dp"
+            android:textColor="@color/colorTextGeneral" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Политикой конфиденциальности"
+            android:id="@+id/textView16"
+            android:textColor="#0900bc"
+            android:textSize="16dp"
+            android:layout_below="@+id/checkBox5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="15dp" />
+    </RelativeLayout>
+
+</LinearLayout>

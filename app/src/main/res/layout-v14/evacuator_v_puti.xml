@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/tollbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/relativeLayout"
+                android:background="@color/colorTextButton"
+                android:alpha="0.6" />
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/relativeLayout"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/RelativeLayout"
+                android:layout_toStartOf="@+id/RelativeLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RENAULT"
+                    android:id="@+id/textView35"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/colorTextGeneral" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="тр234мк56"
+                    android:id="@+id/textView36"
+                    android:textSize="14dp"
+                    android:layout_alignBottom="@+id/textView35"
+                    android:layout_toRightOf="@+id/textView35"
+                    android:layout_toEndOf="@+id/textView35"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorTextFont" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:id="@+id/imageView3"
+                    android:layout_below="@+id/textView35"
+                    android:layout_alignLeft="@+id/textView35"
+                    android:layout_alignStart="@+id/textView35"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/icon_time" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:id="@+id/imageView4"
+                    android:layout_below="@+id/imageView3"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/icon_place"
+                    android:layout_marginBottom="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="29 Декабря, 20:30"
+                    android:id="@+id/textView37"
+                    android:layout_alignBottom="@+id/imageView3"
+                    android:layout_toRightOf="@+id/imageView3"
+                    android:layout_toEndOf="@+id/imageView3"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorTextFont" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Комсомольский пр-т, 65А"
+                    android:id="@+id/textView38"
+                    android:layout_alignBottom="@+id/imageView4"
+                    android:layout_toRightOf="@+id/imageView4"
+                    android:layout_toEndOf="@+id/imageView4"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorTextFont" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="right"
+                android:id="@+id/RelativeLayout"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBottom="@+id/relativeLayout">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ff0000"
+                    android:textColor="@color/colorTextButton"
+                    android:theme="@android:style/Theme.Dialog"
+                    android:text="В пути"
+                    android:textSize="16dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="0.3"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:gravity="bottom"
+            android:visibility="visible">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Отменить заказ"
+                android:background="@drawable/shape_button1"
+                android:textColor="@color/colorButton"
+                android:theme="@android:style/Theme.Dialog"
+                android:textSize="20dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:text="Связаться с водителем"
+                android:background="@drawable/shape_button"
+                android:textColor="@color/colorTextButton"
+                android:theme="@android:style/Theme.Dialog"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="3"
+            android:gravity="center_horizontal|bottom"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="26dp"
+                android:text="2750 Р"
+                android:textColor="@color/colorTextGeneral"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="16dp"
+                android:text="Предварительная стоимость"
+                android:textColor="@color/colorTextGeneral"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:text="Посмотреть тариф"
+                android:background="@drawable/shape_button"
+                android:textColor="@color/colorTextButton"
+                android:theme="@android:style/Theme.Dialog"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

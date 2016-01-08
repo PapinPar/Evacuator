@@ -104,8 +104,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             getAddress(mylatlng.latitude,mylatlng.longitude);
         }
 
-
-
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(mylatlng)
                 .zoom(15)
@@ -164,11 +162,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         PackageManager.PERMISSION_GRANTED) {
             return null;
         }
-        Location location = locationManager
-                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if(location==null){
-            return LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient);
+          //  location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+           // if(location ==null)
+                location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+          //  if(location ==null)
+          //      location = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         }
 
         return location;

@@ -33,15 +33,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="3.3"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:layout_weight="3.3">
                 <Button
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/shape_image1"
                     android:text="A"
                     android:textSize="24dp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/colorButton" />
             </LinearLayout>
             <LinearLayout
@@ -88,7 +88,7 @@
                     android:background="@drawable/shape_image1"
                     android:text="B"
                     android:textSize="24dp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/colorButton" />
             </LinearLayout>
             <LinearLayout
@@ -135,7 +135,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
                 android:background="@mipmap/icon_car"
                 android:layout_weight="0.08" />
 
@@ -172,7 +172,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:textSize="24dp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@mipmap/clock" />
             </LinearLayout>
             <LinearLayout
@@ -180,7 +180,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical|left"
-                android:layout_weight="1.15">
+                android:layout_weight="1.5">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -194,11 +194,11 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical|right"
-                android:layout_weight="1.2">
+                android:layout_weight="0.85">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginRight="15dp"
                     android:text="Сегодня, 20:30"
                     android:textSize="18dp"
                     android:layout_marginLeft="10dp"
@@ -232,7 +232,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@mipmap/avto"
-                    android:layout_marginLeft="15dp" />
+                    android:layout_marginLeft="10dp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -274,7 +274,7 @@
                             android:layout_height="match_parent"
                             android:text="Выбрать"
                             android:textSize="20dp"
-                            android:layout_marginRight="25dp"
+                            android:layout_marginRight="15dp"
                             android:gravity="center_vertical"
                             android:textColor="@color/colorTextFont" />
                     </LinearLayout>
@@ -313,7 +313,7 @@
                             android:layout_height="match_parent"
                             android:text="Выбрать"
                             android:textSize="20dp"
-                            android:layout_marginRight="25dp"
+                            android:layout_marginRight="15dp"
                             android:gravity="center_vertical"
                             android:textColor="@color/colorTextFont" />
                     </LinearLayout>

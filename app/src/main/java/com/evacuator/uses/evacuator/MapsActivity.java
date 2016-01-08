@@ -41,19 +41,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button confirmButton;
     private Geocoder geocoder;
     private String myAddress;
+    private GoogleApiClient mGoogleApiClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         confirmButton = (Button)findViewById(R.id.confirmBut);
 
-
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API)
+                .build();
+        geocoder = new Geocoder(this, Locale.getDefault());
         setContentView(R.layout.activity_maps);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
-        geocoder = new Geocoder(this, Locale.getDefault());
+
     }
 
     @Override
@@ -66,7 +71,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double longitude =mylocation.getLongitude();
         double latitude =mylocation.getLatitude();
 
-        myAddress = getAddress(latitude,longitude);
+       // myAddress = getAddress(latitude,longitude);
+        myAddress = "hello";
         map.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude))
                 .title(myAddress));
@@ -134,14 +140,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         PackageManager.PERMISSION_GRANTED) {
             return null;
         }
-        Location location = locationManager.getLastKnownLocation(bestProvider);
+        Location location = locationManager
+                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if(location==null){
+            location = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+
+
+        }
 
         return location;
     }
     private String getAddress(double latitude,double longtitude){
-        List<Address>addresses = null;
+        geocoder = new Geocoder(this, Locale.getDefault());
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> addresses = null;
         try {
-            addresses = geocoder.getFromLocation(latitude,longtitude,1);
+            addresses = geocoder.getFromLocation(latitude, longtitude, 1);
         } catch (IOException e) {
             e.printStackTrace();
         }

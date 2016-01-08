@@ -10,16 +10,40 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:layout_height="120dp"
         android:background="@color/colorPrimaryDark">
-        <fragment
-            android:id="@+id/autocomplete_fragment"
-            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/frameLayout"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="25dp"
-            android:layout_gravity="bottom" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Ваше местоположение?"
+                android:id="@+id/textView3"
+                android:textColor="@color/common_plus_signin_btn_text_dark"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal|top" />
+            <fragment
+                android:id="@+id/autocomplete_fragment"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/frameLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="bottom"
+                android:background="@color/common_plus_signin_btn_text_dark"
+                />
+        </LinearLayout>
+
+
+
+
     </android.support.v7.widget.Toolbar>
+
+
 
     <FrameLayout
         android:layout_width="match_parent"

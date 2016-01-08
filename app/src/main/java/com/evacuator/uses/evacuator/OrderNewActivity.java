@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -24,15 +25,15 @@ import retrofit.Retrofit;
  */
 public class OrderNewActivity extends AppCompatActivity {
 
-    private double myLongitude;
-    private double myLatitude;
+    private LatLng mylatlng;
     private String myAddress;
     private String myId;
 
-    private double destLongitude;
-    private double destLatitude;
+    private LatLng destlatlng;
     private String destAddress;
     private String destId;
+
+    private double pathValue;
 
     TextView date,date_invis, toEdit, fromEdit;
     DialogFragment Calendar,Time;
@@ -41,17 +42,17 @@ public class OrderNewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_new);
         Intent intent = getIntent();
-        myLongitude = Double.parseDouble(intent.getStringExtra("myLongitude"));
-        myLatitude = Double.parseDouble(intent.getStringExtra("myLatitude"));
+        mylatlng = intent.getParcelableExtra("mylatlng");
         myAddress = (intent.getStringExtra("myAddress"));
         myId = (intent.getStringExtra("myId"));
 
-        destLongitude = Double.parseDouble(intent.getStringExtra("destLongitude"));
-        destLatitude = Double.parseDouble(intent.getStringExtra("destLatitude"));
+        destlatlng = intent.getParcelableExtra("destLongitude");
         destAddress = (intent.getStringExtra("destAddress"));
         destId = (intent.getStringExtra("destId"));
+        pathValue = intent.getDoubleExtra("path",pathValue);
 
         toEdit = (TextView)findViewById(R.id.adress_kuda);
+
         fromEdit = (TextView)findViewById(R.id.adress_otkuda);
 
         date = (TextView)findViewById(R.id.date);

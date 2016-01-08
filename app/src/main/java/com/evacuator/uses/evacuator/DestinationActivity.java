@@ -30,6 +30,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -90,7 +91,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         autocompleteFragment.setOnPlaceSelectedListener(this);
-
+        autocompleteFragment.getView().setBackgroundColor(Color.WHITE);
 
     }
 
@@ -128,7 +129,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
                 .build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         map.animateCamera(cameraUpdate);
-        addMarker(mylatlng, myAddress);
+        addMyMarker(mylatlng, myAddress);
     }
 
     @Override
@@ -153,6 +154,19 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         map.addMarker(new MarkerOptions()
                 .position(latlng)
                 .title(address));
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(latlng)
+                .zoom(15)
+                .build();
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+        map.animateCamera(cameraUpdate);
+    }
+    public void addMyMarker(LatLng latlng,String address){
+        map.addMarker(new MarkerOptions()
+                .position(latlng)
+                .title(address))
+                .setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.pincar));
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(latlng)

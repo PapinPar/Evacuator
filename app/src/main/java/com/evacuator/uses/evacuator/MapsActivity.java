@@ -35,6 +35,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -88,6 +89,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 getFragmentManager().findFragmentById(R.id.autocomplete_fragment);
         autocompleteFragment.getView().setBackgroundColor(0);
         autocompleteFragment.setOnPlaceSelectedListener(this);
+        autocompleteFragment.getView().setBackgroundColor(Color.WHITE);
     }
 
 
@@ -97,7 +99,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         map = googleMap;
         initMap();
         Location mylocation = getLocation();
-      //  mylatlng = new LatLng(40,30);
         if(mylocation !=null){
             mylatlng = new LatLng(mylocation.getLatitude(),mylocation.getLongitude());
             getAddress(mylatlng.latitude,mylatlng.longitude);
@@ -108,25 +109,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(mylatlng)
                 .zoom(15)
-                //.bearing(45)
-            //    .tilt(20)
                 .build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         map.animateCamera(cameraUpdate);
         confirmButton.setText(myAddress);
         addMarker(mylatlng, myAddress);
+
     }
 
     public void addMarker(LatLng latlng,String address){
         map.addMarker(new MarkerOptions()
                 .position(latlng)
-                .title(address));
+                .title(address))
+                .setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.pincar));
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(latlng)
                 .zoom(15)
-               // .bearing(45)
-               // .tilt(20)
                 .build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         map.animateCamera(cameraUpdate);

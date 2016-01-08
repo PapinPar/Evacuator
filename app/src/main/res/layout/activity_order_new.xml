@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,8 @@
 
     <include
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
+        xmlns:tools="http://schemas.android.com/tools"
         layout="@layout/tollbar"
         android:id="@+id/include"
         android:layout_alignParentLeft="true"
@@ -31,13 +33,15 @@
             android:id="@+id/relativeLayout"
             android:layout_below="@+id/include">
 
-            <ImageView
+            <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/imageView"
                 android:layout_marginTop="27dp"
-                android:src="@drawable/one"
+                android:background="@drawable/shape_image1"
                 android:layout_alignParentLeft="true"
+                android:text="1"
+                android:textSize="24dp"
                 android:layout_alignParentStart="true" />
 
             <EditText
@@ -60,12 +64,14 @@
                 android:layout_toRightOf="@+id/imageView"
                 android:layout_toEndOf="@+id/imageView" />
 
-            <ImageView
+            <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/imageView2"
                 android:layout_marginTop="29dp"
-                android:src="@drawable/one"
+                android:background="@drawable/shape_image1"
+                android:text="2"
+                android:textSize="24dp"
                 android:layout_below="@+id/imageView"
                 android:layout_alignLeft="@+id/imageView"
                 android:layout_alignStart="@+id/imageView" />
@@ -83,18 +89,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="куда"
+                android:text="Куда"
                 android:id="@+id/textView2"
                 android:layout_alignTop="@+id/imageView2"
                 android:layout_toRightOf="@+id/imageView2"
                 android:layout_toEndOf="@+id/imageView2" />
 
-            <ImageView
+            <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/imageView3"
                 android:layout_marginTop="17dp"
-                android:src="@drawable/one"
+                android:background="@drawable/shape_image1"
+                android:text="3"
+                android:textSize="24dp"
                 android:layout_below="@+id/imageView2"
                 android:layout_alignLeft="@+id/imageView2"
                 android:layout_alignStart="@+id/imageView2" />
@@ -108,12 +116,14 @@
                 android:layout_toEndOf="@+id/imageView3"
                 android:layout_alignBottom="@+id/imageView3" />
 
-            <ImageView
+            <Button
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/imageView4"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/one"
+                android:background="@drawable/shape_image1"
+                android:textSize="24dp"
+                android:text="4"
                 android:layout_below="@+id/imageView3"
                 android:layout_alignLeft="@+id/imageView3"
                 android:layout_alignStart="@+id/imageView3" />
@@ -126,10 +136,9 @@
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:textColor="#000000"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/imageView4"
-                android:layout_toEndOf="@+id/imageView4"
-                android:layout_marginLeft="5dp" />
+                android:layout_below="@+id/textView4"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignStart="@+id/textView4" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -137,10 +146,9 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="время подачи"
                 android:id="@+id/textView4"
-                android:layout_above="@+id/date_insiv"
-                android:layout_toRightOf="@+id/imageView4"
-                android:layout_toEndOf="@+id/imageView4"
-                android:layout_marginLeft="5dp" />
+                android:layout_alignTop="@+id/imageView4"
+                android:layout_alignRight="@+id/textView"
+                android:layout_alignEnd="@+id/textView" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -154,7 +162,8 @@
                 android:layout_marginTop="26dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -166,8 +175,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="#000000" />
+                android:layout_marginLeft="10dp"
+                android:textColor="#000000"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -180,7 +190,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignBottom="@+id/textView6"
                 android:layout_marginRight="5dp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -192,8 +203,9 @@
                 android:layout_alignLeft="@+id/textView5"
                 android:layout_alignStart="@+id/textView5"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="#000000" />
+                android:layout_marginLeft="10dp"
+                android:textColor="#000000"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -206,7 +218,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignBottom="@+id/textView8"
                 android:layout_marginRight="5dp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -228,7 +241,8 @@
                 android:layout_alignLeft="@+id/probeg"
                 android:layout_alignStart="@+id/probeg"
                 android:layout_marginTop="10dp"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -249,7 +263,9 @@
                 android:layout_alignTop="@+id/time"
                 android:layout_alignLeft="@+id/textView8"
                 android:layout_alignStart="@+id/textView8"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -261,8 +277,9 @@
                 android:layout_alignLeft="@+id/textView5"
                 android:layout_alignStart="@+id/textView5"
                 android:textColor="#000000"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"

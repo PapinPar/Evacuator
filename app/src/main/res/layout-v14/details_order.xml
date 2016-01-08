@@ -28,29 +28,37 @@
             android:weightSum="4">
 
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_1"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@mipmap/manipulator"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp" />
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_2"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@mipmap/posadka"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp" />
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_3"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@mipmap/blockrul"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp" />
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_4"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:background="@mipmap/blockkoles"
+                android:layout_weight="0.8"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp" />
 
 
         </LinearLayout>
@@ -68,8 +76,7 @@
                 android:textColor="@color/colorTextFont"
                 android:textSize="20dp"
                 android:text="Нужен манипулятор"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
+                android:layout_weight="0.96"
                 android:gravity="center_vertical|left" />
             <TextView
                 android:layout_width="wrap_content"
@@ -77,8 +84,7 @@
                 android:textColor="@color/colorTextFont"
                 android:textSize="20dp"
                 android:text="Низкая посадка"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
+                android:layout_weight="0.96"
                 android:gravity="center_vertical|left" />
             <TextView
                 android:layout_width="wrap_content"
@@ -86,8 +92,7 @@
                 android:textColor="@color/colorTextFont"
                 android:textSize="20dp"
                 android:text="Заблокирован руль"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
+                android:layout_weight="0.96"
                 android:gravity="center_vertical|left" />
             <TextView
                 android:layout_width="wrap_content"
@@ -95,8 +100,7 @@
                 android:textColor="@color/colorTextFont"
                 android:textSize="20dp"
                 android:text="Заблокированные колеса"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
+                android:layout_weight="0.96"
                 android:gravity="center_vertical|left" />
 
 

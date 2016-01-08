@@ -5,6 +5,7 @@
     android:padding="10dp">
     <!-- you can use any color you want I used here gray color-->
     <solid
+
         android:color="@color/colorTextFont"/>
     <corners
         android:radius="45dp"/>

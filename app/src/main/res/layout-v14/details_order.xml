@@ -29,28 +29,32 @@
 
             <ImageView
                 android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_1"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_height="wrap_content"
+                android:background="@mipmap/manipulator"
+                android:layout_weight="0.95"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp" />
             <ImageView
                 android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_2"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_height="wrap_content"
+                android:background="@mipmap/posadka"
+                android:layout_weight="0.95"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp" />
             <ImageView
                 android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_3"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_height="wrap_content"
+                android:background="@mipmap/blockrul"
+                android:layout_weight="0.95"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp" />
             <ImageView
                 android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:background="@mipmap/icon_4"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp" />
+                android:layout_height="wrap_content"
+                android:background="@mipmap/blockkoles"
+                android:layout_weight="0.95"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp" />
 
 
         </LinearLayout>

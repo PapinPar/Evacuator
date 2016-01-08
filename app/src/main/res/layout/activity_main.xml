@@ -9,7 +9,7 @@
 
     <include
         android:layout_width="wrap_content"
-        android:layout_height="45"
+        android:layout_height="45dp"
         xmlns:tools="http://schemas.android.com/tools"
         layout="@layout/tollbar"
         android:id="@+id/include"

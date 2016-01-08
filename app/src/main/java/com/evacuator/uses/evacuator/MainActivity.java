@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        date = (TextView)findViewById(R.id.date);
+        setContentView(R.layout.activity_main2);
+        /*date = (TextView)findViewById(R.id.date);
         date_invis = (TextView)findViewById(R.id.date_insiv);
         date.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
-        request();
+        request();*/
 
     }
 

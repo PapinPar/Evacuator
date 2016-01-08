@@ -100,7 +100,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(mylatlng)
+                .target(new LatLng(-27, 133))
                 .zoom(15)
                 //.bearing(45)
             //    .tilt(20)
@@ -160,7 +160,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             return null;
         }
         Location location = locationManager
-                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                .getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         if(location==null){
             return LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);

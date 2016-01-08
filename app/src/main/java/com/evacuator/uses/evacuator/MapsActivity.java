@@ -4,6 +4,7 @@ package com.evacuator.uses.evacuator;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -18,9 +19,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.evacuator.uses.evacuator.maps.entity.GeocodedWaypoint;
-import com.evacuator.uses.evacuator.maps.entity.GeocodedWaypoints;
-import com.evacuator.uses.evacuator.maps.entity.MapApi;
+import com.evacuator.uses.evacuator.maps.entity.address.AddressComponent;
+import com.evacuator.uses.evacuator.maps.entity.address.Results;
+import com.evacuator.uses.evacuator.maps.entity.apies.AddresApi;
+import com.evacuator.uses.evacuator.maps.entity.apies.MapApi;
+import com.evacuator.uses.evacuator.maps.entity.direction.GeocodedWaypoints;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationServices;
@@ -35,10 +38,13 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -94,7 +100,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
       //  mylatlng = new LatLng(40,30);
         if(mylocation !=null){
             mylatlng = new LatLng(mylocation.getLatitude(),mylocation.getLongitude());
-            myAddress = getAddress(mylatlng.latitude,mylatlng.longitude);
+            getAddress(mylatlng.latitude,mylatlng.longitude);
         }
 
 
@@ -169,20 +175,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return location;
     }
 
-    private String getAddress(double latitude,double longtitude){
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        List<Address> addresses = null;
-        try {
-            addresses = geocoder.getFromLocation(latitude, longtitude, 1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if(addresses==null)
-            return null;
-        else
-        //return addresses.get(0).getAddressLine(0);
-        return null;
-
+    private void getAddress(double latitude,double longitude){
+        request(latitude,longitude);
     }
 
     @Override
@@ -211,7 +205,42 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Intent intent = new Intent(this,DestinationActivity.class);
         intent.putExtra("latlng",mylatlng);
         intent.putExtra("address",""+myAddress);
-        intent.putExtra("id",""+myId);
+        intent.putExtra("id", "" + myId);
         startActivity(intent);
+    }
+    private void request(double latitude,double longitude)
+    {
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://maps.googleapis.com/maps/api/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        AddresApi api = retrofit.create(AddresApi.class);
+
+        String param1 = latitude+","+longitude;
+        Call<Results> usersCall = api.get(param1);
+        usersCall.enqueue(new Callback<Results>() {
+            @Override
+            public void onResponse(Response<Results> response, Retrofit retrofit) {
+
+                Results results = response.body();
+                List<AddressComponent> component = results.getResults().get(0).getAddressComponents();
+                myAddress =component.get(3).getLongName()+" ,"+component.get(1).getLongName()+","+component.get(0).getLongName();
+
+                confirmButton.setText(myAddress);
+
+
+                Toast.makeText(getApplicationContext(), myAddress, Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Throwable t) {
+                Log.d("SD", "SD2");
+                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

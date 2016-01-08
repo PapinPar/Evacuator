@@ -1,13 +1,9 @@
-package com.evacuator.uses.evacuator.maps.entity;
+package com.evacuator.uses.evacuator.maps.entity.apies;
 
-import com.evacuator.uses.evacuator.Users;
-
-import java.util.List;
+import com.evacuator.uses.evacuator.maps.entity.direction.GeocodedWaypoints;
 
 import retrofit.Call;
-import retrofit.http.Body;
 import retrofit.http.POST;
-import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**

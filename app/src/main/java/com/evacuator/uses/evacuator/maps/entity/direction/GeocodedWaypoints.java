@@ -1,5 +1,5 @@
 
-package com.evacuator.uses.evacuator.maps.entity;
+package com.evacuator.uses.evacuator.maps.entity.direction;
 
 import java.util.ArrayList;
 import java.util.List;

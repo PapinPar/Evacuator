@@ -1,5 +1,5 @@
 
-package com.evacuator.uses.evacuator.maps.entity;
+package com.evacuator.uses.evacuator.maps.entity.direction;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

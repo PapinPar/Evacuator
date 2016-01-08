@@ -1,5 +1,7 @@
 package com.evacuator.uses.evacuator;
 
+import com.evacuator.uses.evacuator.Users;
+
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.Field;

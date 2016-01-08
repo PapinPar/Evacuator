@@ -13,11 +13,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.evacuator.uses.evacuator.maps.entity.EndLocation_;
-import com.evacuator.uses.evacuator.maps.entity.GeocodedWaypoints;
-import com.evacuator.uses.evacuator.maps.entity.MapApi;
-import com.evacuator.uses.evacuator.maps.entity.StartLocation_;
-import com.evacuator.uses.evacuator.maps.entity.Step;
+import com.evacuator.uses.evacuator.maps.entity.address.AddressComponent;
+import com.evacuator.uses.evacuator.maps.entity.address.Results;
+import com.evacuator.uses.evacuator.maps.entity.apies.AddresApi;
+import com.evacuator.uses.evacuator.maps.entity.direction.EndLocation_;
+import com.evacuator.uses.evacuator.maps.entity.direction.GeocodedWaypoints;
+import com.evacuator.uses.evacuator.maps.entity.apies.MapApi;
+import com.evacuator.uses.evacuator.maps.entity.direction.StartLocation_;
+import com.evacuator.uses.evacuator.maps.entity.direction.Step;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
@@ -68,6 +71,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         setContentView(R.layout.activity_search_dest);
 
         confirmButton = (Button)findViewById(R.id.confirmBut);
+        confirmButton.setOnClickListener(this);
         Intent intent  = getIntent();
 
 
@@ -89,7 +93,6 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
 
     }
-
 
 
     @Override
@@ -130,17 +133,15 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
     @Override
     public void onPlaceSelected(Place place) {
-        Place myPlace = place;
-        destAddress = place.getName().toString();
+        //destAddress = place.
         destlatlang = place.getLatLng();
         destId = place.getId();
         map.clear();
-
+        requestAddr(destlatlang.latitude,destlatlang.longitude);
         addMarker(mylatlng, myAddress);
         addMarker(destlatlang, destAddress);
         confirmButton.setText(destAddress);
         pathValue = 0.0;
-        Toast.makeText(getApplicationContext(),"Hello   = "+pathValue,Toast.LENGTH_LONG).show();
         request();
     }
 
@@ -194,9 +195,8 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         Call<GeocodedWaypoints> usersCall = api.get(param1,param2);
         usersCall.enqueue(new Callback<GeocodedWaypoints>() {
             @Override
-            public void onResponse(Response<GeocodedWaypoints>response, Retrofit retrofit)
-            {
-                Log.d("SD","SD");
+            public void onResponse(Response<GeocodedWaypoints> response, Retrofit retrofit) {
+                Log.d("SD", "SD");
                 GeocodedWaypoints s = response.body();
 
                 ArrayList<LatLng> directionPoint = getDirection(s);
@@ -209,12 +209,11 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
                 Polyline polylin = map.addPolyline(rectLine);
 
 
-
-                Toast.makeText(getApplicationContext(), String.valueOf( s.getRoutes().get(0).getLegs().get(0).getSteps().get(0).getDistance().getValue()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.valueOf(s.getRoutes().get(0).getLegs().get(0).getSteps().get(0).getDistance().getValue()), Toast.LENGTH_SHORT).show();
             }
 
             public void onFailure(Throwable t) {
-                Log.d("SD","SD2");
+                Log.d("SD", "SD2");
                 Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
             }
         });
@@ -235,7 +234,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
             listGeopoints.add(new LatLng(lat, lng));
             pathValue+=step.getDistance().getValue();
 
-            com.evacuator.uses.evacuator.maps.entity.Polyline polyline = step.getPolyline();
+            com.evacuator.uses.evacuator.maps.entity.direction.Polyline polyline = step.getPolyline();
 
             ArrayList<LatLng> arr = decodePoly(polyline.getPoints());
             for (int j = 0; j < arr.size(); j++) {
@@ -252,8 +251,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
         return listGeopoints;
     }
-    private ArrayList<LatLng> decodePoly(String encoded)
-    {
+    private ArrayList<LatLng> decodePoly(String encoded){
         ArrayList<LatLng> poly = new ArrayList<LatLng>();
         int index = 0, len = encoded.length();
         int lat = 0, lng = 0;
@@ -280,5 +278,39 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
             poly.add(position);
         }
         return poly;
+    }
+
+    private void requestAddr(double latitude,double longitude){
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://maps.googleapis.com/maps/api/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        AddresApi api = retrofit.create(AddresApi.class);
+
+        String param1 = latitude+","+longitude;
+        Call<Results> usersCall = api.get(param1);
+        usersCall.enqueue(new Callback<Results>() {
+            @Override
+            public void onResponse(Response<Results> response, Retrofit retrofit) {
+
+                Results results = response.body();
+                List<AddressComponent> component = results.getResults().get(0).getAddressComponents();
+                destAddress =component.get(3).getLongName()+" ,"+component.get(1).getLongName()+","+component.get(0).getLongName();
+
+                confirmButton.setText(destAddress);
+
+                Toast.makeText(getApplicationContext(), destAddress, Toast.LENGTH_SHORT).show();
+            }
+
+            public void onFailure(Throwable t) {
+                Log.d("SD", "SD2");
+                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

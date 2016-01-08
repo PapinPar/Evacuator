@@ -20,11 +20,11 @@
         android:layout_height="346dp"
         android:orientation="vertical"
         android:weightSum="5"
-        android:layout_weight="0.6">
+        android:layout_weight="0.88">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:weightSum="4"
             android:background="#ffffff"
@@ -41,7 +41,8 @@
                     android:background="@drawable/shape_image1"
                     android:text="A"
                     android:textSize="24dp"
-                    android:layout_marginLeft="15dp" />
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/colorButton" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,7 +71,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:weightSum="4"
             android:gravity="center_vertical"
@@ -87,7 +88,8 @@
                     android:background="@drawable/shape_image1"
                     android:text="B"
                     android:textSize="24dp"
-                    android:layout_marginLeft="15dp" />
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/colorButton" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,17 +120,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="#e3e3e3"
-            android:layout_weight="0.2"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp">
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:weightSum="1">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:background="@mipmap/icon_car"
+                android:layout_weight="0.08" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dialog"
+                android:layout_weight="0.92">
+
+            </Spinner>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="60dp"
             android:orientation="horizontal"
             android:weightSum="4"
             android:background="#ffffff"
@@ -141,10 +171,9 @@
                 <Button
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/shape_image1"
-                    android:text="C"
                     android:textSize="24dp"
-                    android:layout_marginLeft="15dp" />
+                    android:layout_marginLeft="15dp"
+                    android:background="@mipmap/clock" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -180,8 +209,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="#e3e3e3"
-            android:layout_weight="0.2"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp">
         </LinearLayout>
@@ -191,7 +220,7 @@
             android:layout_height="70dp"
             android:orientation="horizontal"
             android:background="#ffffff"
-            android:layout_weight="1.6"
+            android:layout_weight="1.3"
             android:weightSum="4">
 
             <LinearLayout
@@ -200,12 +229,10 @@
                 android:layout_weight="3.3"
                 android:gravity="center_vertical">
                 <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/shape_image1"
-                    android:text="D"
-                    android:textSize="24dp"
-                    android:layout_marginLeft="15dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/avto"
+                    android:layout_marginLeft="15dp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -218,14 +245,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:layout_weight="1"
+                    android:layout_weight="1.1"
                     android:weightSum="3"
                     android:layout_gravity="center_vertical">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:layout_weight="1"
+                        android:layout_weight="1.20"
                         android:layout_gravity="left|center_vertical">
                         <TextView
                             android:layout_width="wrap_content"
@@ -240,7 +267,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:layout_weight="2"
+                        android:layout_weight="1.80"
                         android:gravity="center_vertical|right">
                         <TextView
                             android:layout_width="wrap_content"
@@ -256,14 +283,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:layout_weight="1"
+                    android:layout_weight="1.1"
                     android:weightSum="3"
                     android:layout_gravity="center_vertical">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:layout_weight="1"
+                        android:layout_weight="1.60"
                         android:layout_gravity="center_vertical|left">
                         <TextView
                             android:layout_width="wrap_content"
@@ -278,7 +305,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:layout_weight="2"
+                        android:layout_weight="1.40"
                         android:gravity="right"
                         android:layout_gravity="center_vertical|right">
                         <TextView
@@ -302,13 +329,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="4"
-        android:layout_weight="0.4">
+        android:weightSum="2"
+        android:layout_weight="0.22">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="#e3e3e3"
+            android:background="#dddddd"
             android:layout_weight="0.02"
             android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp">
@@ -319,14 +346,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:weightSum="2"
-            android:layout_weight="1"
+            android:weightSum="3"
+            android:layout_weight="0.98"
             android:background="#ffffff">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Предварительная стоимость"
+                android:textSize="18dp"
+                android:text="ПОГРУЗКА/РАЗГРУЗКА"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:textColor="@color/colorTextFont" />
@@ -334,8 +361,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="28dp"
-                android:text="2250 Р"
+                android:textSize="24dp"
+                android:text="1800 Р"
+                android:layout_weight="1"
+                android:textColor="@color/colorTextGeneral" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="далее 1км.(22 руб.) + 1 мин.(12 руб.)"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:textColor="@color/colorTextGeneral" />
 
@@ -345,19 +381,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="3"
+            android:layout_weight="0.98"
             android:weightSum="3"
-            android:background="#e3e3e3"
+            android:background="#dddddd"
             android:layout_marginTop="1dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:text="стоимость может изменится в меньшую или большую сторону в соответствии с пробегом и затраченным временем"
-                android:textSize="16dp"
-                android:layout_weight="1"
-                android:textColor="@color/colorTextFont" />
 
             <Button
                 android:layout_width="match_parent"
@@ -370,9 +397,10 @@
                 android:id="@+id/button2"
                 android:theme="@android:style/Theme.Dialog"
                 android:background="@drawable/shape_button"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/colorTextButton"
-                android:layout_weight="0.5" />
+                android:layout_weight="0.5"
+                android:layout_marginBottom="15dp" />
         </LinearLayout>
 
 

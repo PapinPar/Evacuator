@@ -202,7 +202,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/ratingBar"
             android:layout_gravity="center_horizontal"
-            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator" />
+            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
+            android:rating="4" />
 
         <Button
             android:layout_width="match_parent"

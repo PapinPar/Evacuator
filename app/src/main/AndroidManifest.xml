@@ -58,9 +58,8 @@
         </activity>
 
 
-        <service android:name=".maps.core.services.DriverCheckService">
-
-        </service>
+        <service android:name=".maps.core.services.DriverCheckService"></service>
+        <service android:name=".maps.core.services.AddressService"></service>
 
     </application>
 

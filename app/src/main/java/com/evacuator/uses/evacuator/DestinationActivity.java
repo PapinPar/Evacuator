@@ -64,8 +64,9 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
     private GoogleMap map;
     private double pathValue = 0.0;
     private int pathTime = 0;
+    public MapDrawer drawer;
 
-    private Button confirmButton;
+    public Button confirmButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

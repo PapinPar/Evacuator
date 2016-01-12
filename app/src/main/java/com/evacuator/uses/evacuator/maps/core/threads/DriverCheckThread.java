@@ -32,9 +32,8 @@ public class DriverCheckThread implements Runnable {
     private Service service;
 
 
-    public DriverCheckThread(Service service,Context context,String key, int time){
+    public DriverCheckThread(Service service,String key, int time){
         this.intent = new Intent("MY_BROADCAST_CHECK");
-//        /this.intent.setAction("MY_BROADCAST_CHECK");
         this.key = key;
         this.time = time;
         this.service = service;

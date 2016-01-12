@@ -48,13 +48,18 @@
         <activity android:name=".OrderNewActivity"></activity>
         <activity android:name=".OrderDetailsActivity"></activity>
         <activity android:name=".OrderInfoActivity"></activity>
-        <activity android:name=".CheckDriverActivity">
+        <activity android:name=".DriverCheckActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <service android:name=".maps.core.services.DriverCheckService">
+
+        </service>
 
     </application>
 

@@ -248,6 +248,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         intent.putExtra("id", "" + myId);
         startActivity(intent);
     }
+
     private void request(double latitude,double longitude)
     {
 

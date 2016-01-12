@@ -27,7 +27,8 @@ public class AddressBroadcast extends BroadcastReceiver {
 
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(Context context, Intent intent)
+    {
         MapDrawer drawer = null;
         String address = intent.getStringExtra("address");
         LatLng mylatlng = intent.getParcelableExtra("latlng");
@@ -37,7 +38,8 @@ public class AddressBroadcast extends BroadcastReceiver {
            destActivity.confirmButton.setText(address);
            drawer = destActivity.drawer;
        }
-        else{
+        else
+       {
            activity.myAddress = address;
            activity.confirmButton.setText(address);
            drawer = activity.drawer;

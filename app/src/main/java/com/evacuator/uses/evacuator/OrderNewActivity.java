@@ -344,6 +344,11 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v)
     {
+        Double pathTime = getIntent().getDoubleExtra("pathTime", 0);
+        Double pathValue = getIntent().getDoubleExtra("path", 0);
+        Double sum = Double.parseDouble(TarifsInfo.get(1));
+        sum = sum +pathValue*Double.parseDouble(TarifsInfo.get(2));
+        //sum = sum +(Integer.parseInt(pathTime)*Integer.parseInt(TarifsInfo.get(3)));
         switch (v.getId())
         {
             case R.id.create_order_1:
@@ -361,9 +366,12 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                 next_order.putExtra("idModel",String.valueOf(model));
                 next_order.putExtra("car_type",String.valueOf(car_type));
                 next_order.putExtra("time",date.getText().toString());
+                next_order.putExtra("SUM",sum);
+
                 startActivity(next_order);
                 break;
         }
     }
+
 }
 

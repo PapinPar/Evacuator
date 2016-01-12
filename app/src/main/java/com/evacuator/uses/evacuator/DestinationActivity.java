@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.evacuator.uses.evacuator.maps.core.services.AddressService;
+import com.evacuator.uses.evacuator.maps.core.services.DriverCheckService;
 import com.evacuator.uses.evacuator.maps.entity.address.AddressComponent;
 import com.evacuator.uses.evacuator.maps.entity.address.Results;
 import com.evacuator.uses.evacuator.maps.entity.apies.AddresApi;
@@ -99,9 +101,14 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
 
-        if(destlatlang!=null && destAddress!=null ){
+        if(destlatlang!=null && destAddress!=null )
+        {
+            stopService(new Intent(this, DriverCheckService.class));
+            stopService(new Intent(this,AddressService.class));
+
             Intent intent = new Intent(this,OrderNewActivity.class);
             intent.putExtra("mylatlng",mylatlng);
             intent.putExtra("myAddress",""+myAddress);
@@ -111,8 +118,10 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
             intent.putExtra("destAddress",""+destAddress);
             intent.putExtra("destId",""+destId);
 
-            intent.putExtra("path",pathValue/1000);
-            intent.putExtra("pathTime",pathTime);
+            intent.putExtra("path", pathValue / 1000);
+            intent.putExtra("pathTime", pathTime);
+
+
 
             startActivity(intent);
         }

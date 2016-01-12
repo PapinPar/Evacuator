@@ -116,26 +116,29 @@
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/switch1"
-                android:checked="true"
-                android:layout_weight="1" />
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/switch2"
+                android:id="@+id/check_1"
                 android:checked="false"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onCheckboxClicked" />
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/switch3"
-                android:checked="true"
-                android:layout_weight="1" />
+                android:id="@+id/check_2"
+                android:checked="false"
+                android:layout_weight="1"
+                android:onClick="onCheckboxClicked" />
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/check_3"
+                android:checked="false"
+                android:layout_weight="1"
+                android:onClick="onCheckboxClicked" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:id="@+id/spinner2"
+                android:id="@+id/spin_wheel"
                 android:layout_weight="1" />
 
         </LinearLayout>
@@ -159,15 +162,12 @@
         android:background="@color/colorTextButton"
         android:layout_weight="2">
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:textColor="@color/colorTextFont"
-            android:textSize="18dp"
-            android:text="Примечания"/>
+            android:id="@+id/editText2"
+            android:layout_weight="1"
+            android:hint="Коментраий" />
     </LinearLayout>
 
     <LinearLayout
@@ -193,7 +193,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTextFont"
-            android:text="ПОГРУЗКА/РАЗГРУЗКА"
+            android:text="ИТОГО"
             android:textSize="18dp"
             android:layout_marginTop="15dp"
             android:layout_weight="0.5"
@@ -208,16 +208,8 @@
             android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
             android:layout_weight="0.5"
-            android:gravity="center" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="далее 1км.(22 руб.) + 1 мин.(12 руб.)"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.5"
-            android:textColor="@color/colorTextGeneral" />
+            android:gravity="center"
+            android:id="@+id/all_cost" />
 
     </LinearLayout>
 

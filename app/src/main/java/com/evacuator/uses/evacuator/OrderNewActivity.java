@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -344,10 +345,14 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v)
     {
-        Double pathTime = getIntent().getDoubleExtra("pathTime", 0);
+        int pathTime = getIntent().getIntExtra("pathTime", 0);
         Double pathValue = getIntent().getDoubleExtra("path", 0);
         Double sum = Double.parseDouble(TarifsInfo.get(1));
         sum = sum +pathValue*Double.parseDouble(TarifsInfo.get(2));
+        BigDecimal s2;
+        s2 = new BigDecimal(String.valueOf(sum));
+        s2.setScale(0, BigDecimal.ROUND_HALF_UP).toString();
+        sum = Double.parseDouble(String.valueOf(s2));
         //sum = sum +(Integer.parseInt(pathTime)*Integer.parseInt(TarifsInfo.get(3)));
         switch (v.getId())
         {
@@ -367,8 +372,9 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                 next_order.putExtra("car_type",String.valueOf(car_type));
                 next_order.putExtra("time",date.getText().toString());
                 next_order.putExtra("SUM",sum);
+                next_order.putExtra("tarif_name",TarifsInfo.get(0).toString());
 
-                startActivity(next_order);
+                    startActivity(next_order);
                 break;
         }
     }

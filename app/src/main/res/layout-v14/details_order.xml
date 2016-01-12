@@ -118,22 +118,19 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/check_1"
                 android:checked="false"
-                android:layout_weight="1"
-                android:onClick="onCheckboxClicked" />
+                android:layout_weight="1" />
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/check_2"
                 android:checked="false"
-                android:layout_weight="1"
-                android:onClick="onCheckboxClicked" />
+                android:layout_weight="1" />
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/check_3"
                 android:checked="false"
-                android:layout_weight="1"
-                android:onClick="onCheckboxClicked" />
+                android:layout_weight="1" />
 
             <Spinner
                 android:layout_width="match_parent"
@@ -165,7 +162,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
+            android:id="@+id/coments"
             android:layout_weight="1"
             android:hint="Коментраий" />
     </LinearLayout>
@@ -231,12 +228,13 @@
             android:text="Оформить заказ"
             android:textSize="20dp"
             android:gravity="center"
-            android:id="@+id/button2"
+            android:id="@+id/create_order"
             android:theme="@android:style/Theme.Dialog"
             android:background="@drawable/shape_button"
             android:layout_marginTop="5dp"
             android:textColor="@color/colorTextButton"
-            android:layout_weight="0.01" />
+            android:layout_weight="0.01"
+            android:onClick="onClick" />
 
 
 

@@ -1,4 +1,4 @@
-package com.evacuator.uses.evacuator;
+package com.evacuator.uses.evacuator.Dialogs;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.evacuator.uses.evacuator.R;
 
 import java.util.Calendar;
 

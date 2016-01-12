@@ -7,16 +7,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.evacuator.uses.evacuator.Dialogs.DialogDate;
+import com.evacuator.uses.evacuator.Dialogs.DialogTime;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -25,8 +19,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        /*date = (TextView)findViewById(R.id.date);
+        setContentView(R.layout.activity_order_new);
+        date = (TextView)findViewById(R.id.date);
         date_invis = (TextView)findViewById(R.id.date_insiv);
         date.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -34,58 +28,22 @@ public class MainActivity extends AppCompatActivity
                 Time.show(getFragmentManager(), "Time");
             }
         });
-        date_invis.addTextChangedListener(new TextWatcher()
-        {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
+        date_invis.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
+
             @Override
-            public void afterTextChanged(Editable s)
-            {
-                if(!date_invis.getText().toString().equals("Ближайшее"))
-                {
+            public void afterTextChanged(Editable s) {
+                if (!date_invis.getText().toString().equals("Ближайшее")) {
                     Calendar = new DialogDate();
                     Calendar.show(getFragmentManager(), "Time");
                 }
             }
         });
-        request();*/
+     }
 
-    }
-
-    private void request()
-    {
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://app.bb-evacuator.ru/api/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        MyApi api = retrofit.create(MyApi.class);
-      //  Call<Users> usersCall = api.getOrder(null,null,null,null,null,null,null,null,"+380638367925","1",null,null,"Украина, Харьков, проспект Людвика Свободы ",null,null,
-           //     null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-        Call<Users>usersCall = api.get();
-        usersCall.enqueue(new Callback<Users>() {
-            @Override
-            public void onResponse(Response<Users> response, Retrofit retrofit)
-            {
-                Users s = response.body();
-         //       s.getAddress();
-         //       s.getPhone();
-          //      s.getId();
-                Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Throwable t)
-            {
-                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }

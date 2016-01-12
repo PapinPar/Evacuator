@@ -166,7 +166,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if(location==null){
           //  location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
            // if(location ==null)
-                location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+                    location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
           //  if(location ==null)
           //      location = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
         }

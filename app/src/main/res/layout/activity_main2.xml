@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:orientation="horizontal"
             android:weightSum="4"
             android:layout_weight="1">
@@ -52,13 +52,7 @@
                 android:layout_weight="0.7"
                 android:background="#ffffff"
                 android:layout_marginBottom="1dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="ул.Ленина, 23А"
-                    android:textSize="20dp"
-                    android:textColor="@color/colorTextGeneral" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -66,14 +60,15 @@
                     android:layout_marginLeft="10dp"
                     android:text="Москва"
                     android:textSize="20dp"
-                    android:textColor="@color/colorTextFont" />
+                    android:textColor="@color/colorTextFont"
+                    android:id="@+id/adress_otkuda" />
             </LinearLayout>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:orientation="horizontal"
             android:weightSum="4"
             android:gravity="center_vertical"
@@ -107,15 +102,8 @@
                     android:text="Куда?"
                     android:textSize="20dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorTextFont" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="(Необязательно)"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="0.95"
                     android:textColor="@color/colorTextFont"
-                    android:textSize="20dp" />
+                    android:id="@+id/adress_kuda" />
             </LinearLayout>
         </LinearLayout>
 
@@ -146,7 +134,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:spinnerMode="dialog"
-                android:layout_weight="0.92">
+                android:layout_weight="0.92"
+                android:id="@+id/car_type">
 
             </Spinner>
         </LinearLayout>
@@ -187,10 +176,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Время"
+                    android:text="Ближайшее время"
                     android:textSize="20dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorTextFont" />
+                    android:textColor="@color/colorTextFont"
+                    android:id="@+id/date" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -205,7 +195,9 @@
                     android:text="Сегодня, 20:30"
                     android:textSize="18dp"
                     android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorTextGeneral" />
+                    android:textColor="@color/colorTextGeneral"
+                    android:visibility="gone"
+                    android:id="@+id/date_insiv" />
             </LinearLayout>
         </LinearLayout>
 
@@ -220,10 +212,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="130dp"
             android:orientation="horizontal"
             android:layout_weight="1.3"
-            android:weightSum="4">
+            android:weightSum="4"
+            android:visibility="visible"
+            android:id="@+id/for_auto">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -244,86 +238,70 @@
                 android:weightSum="2"
                 android:layout_weight="0.7">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:weightSum="3"
                     android:layout_gravity="center_vertical"
                     android:background="#ffffff">
-                    <LinearLayout
+
+                    <Spinner
+                        android:layout_width="101dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/spin_brand"
+                        android:layout_weight="1.37"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toRightOf="@+id/auto_brand"
+                        android:layout_toEndOf="@+id/auto_brand"
+                        android:spinnerMode="dialog" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_weight="1.20"
-                        android:layout_gravity="left|center_vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Марка авто"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/colorTextFont" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_weight="1.80"
-                        android:gravity="center_vertical|right">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Выбрать"
-                            android:textSize="20dp"
-                            android:layout_marginRight="15dp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/colorTextFont" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
+                        android:text="Выберите марку   "
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/auto_brand"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:weightSum="3"
                     android:layout_gravity="center_vertical"
                     android:background="#ffffff"
                     android:layout_marginTop="1dp">
-                    <LinearLayout
+
+                    <Spinner
+                        android:layout_width="101dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/spin_model"
+                        android:layout_weight="1.10"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toRightOf="@+id/auto_model"
+                        android:layout_toEndOf="@+id/auto_model"
+                        android:spinnerMode="dialog" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_weight="1.60"
-                        android:layout_gravity="center_vertical|left">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Модель"
-                            android:textSize="20dp"
-                            android:layout_marginLeft="10dp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/colorTextFont" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_weight="1.40"
-                        android:gravity="right"
-                        android:layout_gravity="center_vertical|right">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Выбрать"
-                            android:textSize="20dp"
-                            android:layout_marginRight="15dp"
-                            android:gravity="center_vertical"
-                            android:textColor="@color/colorTextFont" />
-                    </LinearLayout>
-                </LinearLayout>
+                        android:text="Выберите модель"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/auto_model"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
             </LinearLayout>
         </LinearLayout>
@@ -333,10 +311,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="144dp"
         android:orientation="vertical"
-        android:weightSum="2"
-        android:layout_weight="0.22">
+        android:weightSum="2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -400,13 +377,14 @@
                 android:text="Далее"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:id="@+id/button2"
+                android:id="@+id/create_order_1"
                 android:theme="@android:style/Theme.Dialog"
                 android:background="@drawable/shape_button"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/colorTextButton"
                 android:layout_weight="0.5"
-                android:layout_marginBottom="15dp" />
+                android:layout_marginBottom="15dp"
+                android:onClick="onClick" />
         </LinearLayout>
 
 

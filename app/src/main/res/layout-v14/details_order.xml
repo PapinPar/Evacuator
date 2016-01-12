@@ -30,7 +30,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="35dp"
-                android:background="@mipmap/manipulator"
+                android:background="@mipmap/kuzov"
                 android:layout_weight="0.8"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"

@@ -4,11 +4,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<!--
     <include
         android:layout_width="match_parent"
         android:layout_height="45dp"
         layout="@layout/tollbar"/>
+        -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="RENAULT"
-                    android:id="@+id/textView35"
+                    android:id="@+id/textBrand"
                     android:textSize="16dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
@@ -53,11 +54,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="тр234мк56"
-                    android:id="@+id/textView36"
+                    android:id="@+id/textModel"
                     android:textSize="14dp"
-                    android:layout_alignBottom="@+id/textView35"
-                    android:layout_toRightOf="@+id/textView35"
-                    android:layout_toEndOf="@+id/textView35"
+                    android:layout_alignBottom="@+id/textBrand"
+                    android:layout_toRightOf="@+id/textBrand"
+                    android:layout_toEndOf="@+id/textBrand"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/colorTextFont" />
 
@@ -65,9 +66,9 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:id="@+id/imageView3"
-                    android:layout_below="@+id/textView35"
-                    android:layout_alignLeft="@+id/textView35"
-                    android:layout_alignStart="@+id/textView35"
+                    android:layout_below="@+id/textBrand"
+                    android:layout_alignLeft="@+id/textBrand"
+                    android:layout_alignStart="@+id/textBrand"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/icon_time" />
 
@@ -99,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Комсомольский пр-т, 65А"
-                    android:id="@+id/textView38"
+                    android:id="@+id/textAddress"
                     android:layout_alignBottom="@+id/imageView4"
                     android:layout_toRightOf="@+id/imageView4"
                     android:layout_toEndOf="@+id/imageView4"
@@ -139,6 +140,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.root.myapplication.MapsActivity" />
         </LinearLayout>
 
         <LinearLayout

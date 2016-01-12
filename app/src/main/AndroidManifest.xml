@@ -42,19 +42,25 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".DestinationActivity"></activity>
         <activity android:name=".OrderNewActivity"></activity>
         <activity android:name=".OrderDetailsActivity"></activity>
         <activity android:name=".OrderInfoActivity"></activity>
-        <activity android:name=".CheckDriverActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".DriverCheckActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+
+        <service android:name=".maps.core.services.DriverCheckService">
+
+        </service>
 
     </application>
 

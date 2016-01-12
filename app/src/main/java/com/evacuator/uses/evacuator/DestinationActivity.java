@@ -63,6 +63,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
     public String destId;
     private GoogleMap map;
     private double pathValue = 0.0;
+    private int pathTime = 0;
 
     private Button confirmButton;
 
@@ -110,6 +111,7 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
             intent.putExtra("destId",""+destId);
 
             intent.putExtra("path",pathValue/1000);
+            intent.putExtra("pathTime",pathTime);
 
             startActivity(intent);
         }
@@ -235,12 +237,15 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
     public ArrayList<LatLng> getDirection(GeocodedWaypoints geopoints)
     {
+        String path  = geopoints.getRoutes().get(0).getLegs().get(0).getDuration().getText().split(" ")[0];
+        pathTime= Integer.parseInt(path);
         List<Step> steps = geopoints.getRoutes().get(0).getLegs().get(0).getSteps();
         NodeList nl1, nl2, nl3;
         ArrayList<LatLng> listGeopoints = new ArrayList<LatLng>();
         for (int i = 0; i < steps.size(); i++) {
             Step step  = steps.get(i);
             StartLocation_ startLocation_ = step.getStartLocation();
+
 
 
             double lat = startLocation_.getLat();

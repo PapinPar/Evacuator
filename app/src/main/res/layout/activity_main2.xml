@@ -17,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="346dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:weightSum="5"
         android:layout_weight="0.88">
@@ -119,37 +119,6 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:weightSum="1">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:background="@mipmap/icon_car"
-                android:layout_weight="0.08" />
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:spinnerMode="dialog"
-                android:layout_weight="0.92"
-                android:id="@+id/car_type">
-
-            </Spinner>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="#dddddd"
-            android:layout_weight="0.02"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp">
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:weightSum="4"
@@ -161,18 +130,12 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1.65">
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:textSize="24dp"
                     android:layout_marginLeft="10dp"
                     android:background="@mipmap/clock" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|left"
-                android:layout_weight="1.5">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -183,8 +146,13 @@
                     android:id="@+id/date" />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|left"></LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical|right"
                 android:layout_weight="0.85">
@@ -207,17 +175,48 @@
             android:background="#dddddd"
             android:layout_weight="0.02"
             android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp">
+            android:layout_marginBottom="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:weightSum="1"
+            android:background="#ffffff">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:background="@mipmap/icon_car"
+                android:layout_weight="0.08" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dialog"
+                android:layout_weight="0.92"
+                android:id="@+id/car_type" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp">
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:orientation="horizontal"
-            android:layout_weight="1.3"
             android:weightSum="4"
             android:visibility="visible"
-            android:id="@+id/for_auto">
+            android:id="@+id/for_auto"
+            android:background="#ffffff"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -243,6 +242,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1"
+                    android:id="@+id/brandLay"
                     android:layout_gravity="center_vertical"
                     android:background="#ffffff">
 
@@ -254,20 +254,10 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_toRightOf="@+id/auto_brand"
-                        android:layout_toEndOf="@+id/auto_brand"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Выберите марку   "
-                        android:textSize="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTextFont"
-                        android:id="@+id/auto_brand"
-                        android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -275,9 +265,9 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1"
+                    android:id="@+id/modelLay"
                     android:layout_gravity="center_vertical"
-                    android:background="#ffffff"
-                    android:layout_marginTop="1dp">
+                    android:background="#ffffff">
 
                     <Spinner
                         android:layout_width="101dp"
@@ -287,20 +277,18 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:layout_toRightOf="@+id/auto_model"
-                        android:layout_toEndOf="@+id/auto_model"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
 
-                    <TextView
+                    <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Выберите модель"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/colorTextFont"
-                        android:id="@+id/auto_model"
-                        android:textStyle="bold" />
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView5"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/iconseparator"
+                        android:background="#9d9d9d" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -319,9 +307,7 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:background="#dddddd"
-            android:layout_weight="0.02"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp">
+            android:layout_marginTop="2dp">
         </LinearLayout>
 
         <LinearLayout
@@ -330,7 +316,6 @@
             android:orientation="vertical"
             android:gravity="center"
             android:weightSum="3"
-            android:layout_weight="0.98"
             android:background="#ffffff">
             <TextView
                 android:layout_width="match_parent"
@@ -347,13 +332,14 @@
                 android:textSize="24dp"
                 android:text="1800 Р"
                 android:layout_weight="1"
-                android:textColor="@color/colorTextGeneral" />
+                android:textColor="@color/colorTextGeneral"
+                android:id="@+id/price_load" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="далее 1км.(22 руб.) + 1 мин.(12 руб.)"
-                android:id="@+id/textView3"
+                android:id="@+id/price_kmAndMin"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:textColor="@color/colorTextGeneral" />
@@ -364,7 +350,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="0.98"
             android:weightSum="3"
             android:background="#dddddd"
             android:layout_marginTop="1dp">

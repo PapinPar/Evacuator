@@ -4,6 +4,7 @@ import com.evacuator.uses.evacuator.Entity.Brand.NewBrands;
 import com.evacuator.uses.evacuator.Entity.Model.NewModels;
 import com.evacuator.uses.evacuator.Entity.Tarifs.Tarif;
 import com.evacuator.uses.evacuator.Users;
+import com.evacuator.uses.evacuator.maps.entity.driver.location.Example;
 
 import java.util.List;
 
@@ -24,6 +25,12 @@ public interface MyApi
     @GET("reference/models?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&all=true")
     Call<List<NewModels>>getModel(@Query("brandId")String brandID,@Query("carType")String car);
 
-    @GET("/tariff/index?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS")
+    //https://app.bb-evacuator.ru/api
+    @GET("tariffs?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS")
     Call<List<Tarif>>getTarif();
+
+
+    @POST("order/by-key?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&expand=model,brand,driverer,statistics")
+    Call<Example> getDriverInfo(@Query("key")String key);
+
 }

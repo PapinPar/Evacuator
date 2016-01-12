@@ -195,7 +195,7 @@
             android:textColor="@color/colorTextFont"
             android:text="ПОГРУЗКА/РАЗГРУЗКА"
             android:textSize="18dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="0.5"
             android:gravity="center" />
 
@@ -206,7 +206,7 @@
             android:textColor="@color/colorTextGeneral"
             android:text="1800 Р"
             android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="0.5"
             android:gravity="center" />
 

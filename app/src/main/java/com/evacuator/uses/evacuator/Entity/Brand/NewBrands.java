@@ -4,13 +4,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by user on 07.01.16.
+ * Created by user on 08.01.16.
  */
-public class Item {
+public class NewBrands {
 
     @SerializedName("id")
     @Expose
-    private String id;
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -19,7 +19,7 @@ public class Item {
      * No args constructor for use in serialization
      *
      */
-    public Item() {
+    public NewBrands() {
     }
 
     /**
@@ -27,7 +27,7 @@ public class Item {
      * @param id
      * @param name
      */
-    public Item(String id, String name) {
+    public NewBrands(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -37,7 +37,7 @@ public class Item {
      * @return
      * The id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -46,7 +46,7 @@ public class Item {
      * @param id
      * The id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -69,3 +69,4 @@ public class Item {
     }
 
 }
+

@@ -1,40 +1,40 @@
 package com.evacuator.uses.evacuator.Entity.Model;
 
+/**
+ * Created by user on 08.01.16.
+ */
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by user on 07.01.16.
- */
-public class Item {
+public class NewModels {
 
     @SerializedName("id")
     @Expose
-    private String id;
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
     @SerializedName("id_brand")
     @Expose
-    private String idBrand;
+    private Integer idBrand;
     @SerializedName("is_truck")
     @Expose
-    private String isTruck;
+    private Object isTruck;
     @SerializedName("is_jeep")
     @Expose
-    private String isJeep;
+    private Object isJeep;
     @SerializedName("is_evacuator")
     @Expose
-    private String isEvacuator;
+    private Object isEvacuator;
     @SerializedName("weight")
     @Expose
-    private String weight;
+    private Double weight;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public Item() {
+    public NewModels() {
     }
 
     /**
@@ -47,7 +47,7 @@ public class Item {
      * @param isJeep
      * @param isEvacuator
      */
-    public Item(String id, String name, String idBrand, String isTruck, String isJeep, String isEvacuator, String weight) {
+    public NewModels(Integer id, String name, Integer idBrand, Object isTruck, Object isJeep, Object isEvacuator, Double weight) {
         this.id = id;
         this.name = name;
         this.idBrand = idBrand;
@@ -62,7 +62,7 @@ public class Item {
      * @return
      * The id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -71,7 +71,7 @@ public class Item {
      * @param id
      * The id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -98,7 +98,7 @@ public class Item {
      * @return
      * The idBrand
      */
-    public String getIdBrand() {
+    public Integer getIdBrand() {
         return idBrand;
     }
 
@@ -107,7 +107,7 @@ public class Item {
      * @param idBrand
      * The id_brand
      */
-    public void setIdBrand(String idBrand) {
+    public void setIdBrand(Integer idBrand) {
         this.idBrand = idBrand;
     }
 
@@ -116,7 +116,7 @@ public class Item {
      * @return
      * The isTruck
      */
-    public String getIsTruck() {
+    public Object getIsTruck() {
         return isTruck;
     }
 
@@ -125,7 +125,7 @@ public class Item {
      * @param isTruck
      * The is_truck
      */
-    public void setIsTruck(String isTruck) {
+    public void setIsTruck(Object isTruck) {
         this.isTruck = isTruck;
     }
 
@@ -134,7 +134,7 @@ public class Item {
      * @return
      * The isJeep
      */
-    public String getIsJeep() {
+    public Object getIsJeep() {
         return isJeep;
     }
 
@@ -143,7 +143,7 @@ public class Item {
      * @param isJeep
      * The is_jeep
      */
-    public void setIsJeep(String isJeep) {
+    public void setIsJeep(Object isJeep) {
         this.isJeep = isJeep;
     }
 
@@ -152,7 +152,7 @@ public class Item {
      * @return
      * The isEvacuator
      */
-    public String getIsEvacuator() {
+    public Object getIsEvacuator() {
         return isEvacuator;
     }
 
@@ -161,7 +161,7 @@ public class Item {
      * @param isEvacuator
      * The is_evacuator
      */
-    public void setIsEvacuator(String isEvacuator) {
+    public void setIsEvacuator(Object isEvacuator) {
         this.isEvacuator = isEvacuator;
     }
 
@@ -170,7 +170,7 @@ public class Item {
      * @return
      * The weight
      */
-    public String getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
@@ -179,7 +179,7 @@ public class Item {
      * @param weight
      * The weight
      */
-    public void setWeight(String weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 

@@ -7,16 +7,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.evacuator.uses.evacuator.Dialogs.DialogDate;
+import com.evacuator.uses.evacuator.Dialogs.DialogTime;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.GsonConverterFactory;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -34,25 +28,22 @@ public class MainActivity extends AppCompatActivity
                 Time.show(getFragmentManager(), "Time");
             }
         });
-        date_invis.addTextChangedListener(new TextWatcher()
-        {
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
+        date_invis.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
+
             @Override
-            public void afterTextChanged(Editable s)
-            {
-                if(!date_invis.getText().toString().equals("Ближайшее"))
-                {
+            public void afterTextChanged(Editable s) {
+                if (!date_invis.getText().toString().equals("Ближайшее")) {
                     Calendar = new DialogDate();
                     Calendar.show(getFragmentManager(), "Time");
                 }
             }
         });
-    }
+     }
 
 }

@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.evacuator.uses.evacuator.MyApi;
+import com.evacuator.uses.evacuator.Entity.MyApi;
 import com.evacuator.uses.evacuator.R;
 import com.evacuator.uses.evacuator.maps.core.broadcasts.DriverCheckBroadcast;
 import com.evacuator.uses.evacuator.maps.entity.driver.location.Example;

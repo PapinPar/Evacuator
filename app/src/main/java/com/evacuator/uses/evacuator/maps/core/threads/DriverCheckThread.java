@@ -50,6 +50,7 @@ public class DriverCheckThread implements Runnable {
                 e.printStackTrace();
             }
         }
+        service.stopSelf();
     }
 
 

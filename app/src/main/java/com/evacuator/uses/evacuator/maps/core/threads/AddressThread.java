@@ -40,6 +40,12 @@ public class AddressThread implements Runnable {
     @Override
     public void run() {
         request();
+        try {
+            new Thread().sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        service.stopSelf();
     }
 
 

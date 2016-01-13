@@ -2,12 +2,14 @@ package com.evacuator.uses.evacuator;
 
 import android.*;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 
+import com.evacuator.uses.evacuator.maps.core.services.AddressService;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
@@ -16,7 +18,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by root on 11.01.16.
@@ -24,30 +30,57 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapDrawer {
     GoogleMap map;
     Context context;
+    List<MarkerOptions> markers = new ArrayList<>();
 
     public MapDrawer(GoogleMap map,Context context ){
         this.map = map;
         this.context = context;
     }
     public void addMarker(LatLng latlng, String address,int picRecource) {
+
+
+        MarkerOptions option = new MarkerOptions()
+                            .position(latlng)
+                            .title(address);
         if(picRecource!=-111222111) {
-            map.addMarker(new MarkerOptions()
+            option.icon(BitmapDescriptorFactory.fromResource(picRecource));
+
+          /*  map.addMarker(new MarkerOptions()
                     .position(latlng)
                     .title(address))
                     .setIcon(BitmapDescriptorFactory.fromResource(picRecource));
+                    */
         }
-        else{
-            map.addMarker(new MarkerOptions()
-                    .position(latlng)
-                    .title(address));
-        }
+        markers.add(option);
+        map.addMarker(option);
+        drawMarker(option);
+
+    }
+    private void drawMarker(MarkerOptions option){
+
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latlng)
+                .target(option.getPosition())
                 .zoom(15)
                 .build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         map.animateCamera(cameraUpdate);
+    }
+    public void redrawMarker(LatLng latlng, int id){
+        if(markers.size()!=0) {
+            MarkerOptions option = markers.get(id);
+            if(option.getPosition().longitude !=latlng.longitude && option.getPosition().latitude !=latlng.latitude) {
+                option.position(latlng);
+                Intent intent = new Intent(context, AddressService.class);
+                intent.putExtra("lat", latlng.latitude);
+                intent.putExtra("lng", latlng.longitude);
+                context.startService(intent);
+                map.clear();
+                for (MarkerOptions options : markers) {
+                    map.addMarker(options);
+                }
+            }
+        }
     }
 
     public Location getLocation() {
@@ -75,6 +108,10 @@ public class MapDrawer {
         }
 
         return location;
+    }
+
+    public void bindAddressLast(String address){
+        markers.get(markers.size()-1).title(address);
     }
 
 }

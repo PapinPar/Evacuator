@@ -30,20 +30,21 @@ public class AddressBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         MapDrawer drawer = null;
         String address = intent.getStringExtra("address");
-        LatLng mylatlng = intent.getParcelableExtra("latlng");
 
        if(activity ==null) {
            destActivity.myAddress = address;
            destActivity.confirmButton.setText(address);
            drawer = destActivity.drawer;
+           drawer.bindAddressLast(address);
        }
         else{
            activity.myAddress = address;
            activity.confirmButton.setText(address);
            drawer = activity.drawer;
+           drawer.bindAddressLast(address);
        }
 
-        drawer.addMarker(mylatlng,address, R.mipmap.pincar);
+       //drawer.addMarker(mylatlng,address, R.mipmap.pincar);
     }
 }
 

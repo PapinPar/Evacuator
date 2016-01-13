@@ -2,6 +2,7 @@ package com.evacuator.uses.evacuator;
 
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,9 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.evacuator.uses.evacuator.maps.entity.address.AddressComponent;
-import com.evacuator.uses.evacuator.maps.entity.address.Results;
-import com.evacuator.uses.evacuator.maps.entity.apies.AddresApi;
+
+import com.evacuator.uses.evacuator.maps.core.broadcasts.AddressBroadcast;
+import com.evacuator.uses.evacuator.maps.core.services.AddressService;
 import com.evacuator.uses.evacuator.maps.entity.direction.EndLocation_;
 import com.evacuator.uses.evacuator.maps.entity.direction.GeocodedWaypoints;
 import com.evacuator.uses.evacuator.maps.entity.apies.MapApi;
@@ -25,15 +26,13 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
+
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.gson.Gson;
@@ -95,6 +94,10 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         autocompleteFragment.setOnPlaceSelectedListener(this);
         autocompleteFragment.getView().setBackgroundColor(Color.WHITE);
 
+        AddressBroadcast broadcast = new AddressBroadcast(this);
+        IntentFilter intFilt = new IntentFilter("MY_BROADCAST_ADDRESS");
+        registerReceiver(broadcast, intFilt);
+
     }
 
 
@@ -122,17 +125,11 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
 
         map = googleMap;
+        drawer = new MapDrawer(map,this);
         initMap();
-        map.addMarker(new MarkerOptions()
-                .position(mylatlng)
-                .title(myAddress));
 
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(mylatlng)
-                .build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        map.animateCamera(cameraUpdate);
-        addMyMarker(mylatlng, myAddress);
+        drawer.addMarker(mylatlng, myAddress, R.mipmap.pincar);
+
     }
 
     @Override
@@ -141,42 +138,22 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         destlatlang = place.getLatLng();
         destId = place.getId();
         map.clear();
-        requestAddr(destlatlang.latitude,destlatlang.longitude);
-        addMarker(mylatlng, myAddress);
-        addMarker(destlatlang, destAddress);
+        drawer.addMarker(mylatlng,myAddress,R.mipmap.pincar);
+        drawer.addMarker(destlatlang, destAddress, -111222111);
         confirmButton.setText(destAddress);
         pathValue = 0.0;
+
+        Intent intent = new Intent(this, AddressService.class);
+        intent.putExtra("lng", destlatlang.longitude);
+        intent.putExtra("lat", destlatlang.latitude);
+        startService(intent);
+
         request();
     }
 
     @Override
     public void onError(Status status) {
 
-    }
-    public void addMarker(LatLng latlng,String address){
-        map.addMarker(new MarkerOptions()
-                .position(latlng)
-                .title(address));
-
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latlng)
-                .zoom(15)
-                .build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        map.animateCamera(cameraUpdate);
-    }
-    public void addMyMarker(LatLng latlng,String address){
-        map.addMarker(new MarkerOptions()
-                .position(latlng)
-                .title(address))
-                .setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.pincar));
-
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latlng)
-                .zoom(15)
-                .build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        map.animateCamera(cameraUpdate);
     }
 
     public void initMap() {
@@ -298,39 +275,5 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
             poly.add(position);
         }
         return poly;
-    }
-
-    private void requestAddr(double latitude,double longitude){
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://maps.googleapis.com/maps/api/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        AddresApi api = retrofit.create(AddresApi.class);
-
-        String param1 = latitude+","+longitude;
-        Call<Results> usersCall = api.get(param1);
-        usersCall.enqueue(new Callback<Results>() {
-            @Override
-            public void onResponse(Response<Results> response, Retrofit retrofit) {
-
-                Results results = response.body();
-                List<AddressComponent> component = results.getResults().get(0).getAddressComponents();
-                destAddress =component.get(3).getLongName()+" ,"+component.get(1).getLongName()+","+component.get(0).getLongName();
-
-                confirmButton.setText(destAddress);
-
-                Toast.makeText(getApplicationContext(), destAddress, Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Throwable t) {
-                Log.d("SD", "SD2");
-                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

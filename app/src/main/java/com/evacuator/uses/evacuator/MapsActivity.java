@@ -66,7 +66,7 @@ import retrofit.Retrofit;
 
 //home
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, PlaceSelectionListener, View.OnClickListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, PlaceSelectionListener, View.OnClickListener ,GoogleMap.OnCameraChangeListener{
 
     private GoogleMap map;
     public Button confirmButton;
@@ -105,8 +105,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         AddressBroadcast broadcast = new AddressBroadcast(this);
         IntentFilter intFilt = new IntentFilter("MY_BROADCAST_ADDRESS");
         registerReceiver(broadcast, intFilt);
-
-
     }
 
     private void checkPirmission() {
@@ -149,16 +147,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        map.setOnCameraChangeListener(this);
         drawer = new MapDrawer(map,this);
         initMap();
-        if (pirmission_granted == true)
+        if (pirmission_granted == true){
             drawMyLocation();
-
+        }
     }
 
     public void drawMyLocation() {
         Location mylocation = getLocation();
-
 
         if (mylocation != null) {
             mylatlng = new LatLng(mylocation.getLatitude(), mylocation.getLongitude());
@@ -166,17 +164,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             intent.putExtra("lng",mylocation.getLongitude());
             intent.putExtra("lat",mylocation.getLatitude());
             startService(intent);
+            drawer.addMarker(mylatlng, "", R.mipmap.pincar);
         }
-/*
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(mylatlng)
-                .zoom(15)
-                .build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        map.animateCamera(cameraUpdate);
-        confirmButton.setText(myAddress);
-        addMarker(mylatlng, myAddress);
-        */
     }
 
     public void initMap() {
@@ -278,5 +267,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             // other 'case' lines to check for other
             // permissions this app might request
         }
+    }
+
+    @Override
+    public void onCameraChange(CameraPosition cameraPosition) {
+        drawer.redrawMarker(cameraPosition.target,0);
+        mylatlng=cameraPosition.target;
+        Log.d("cameara",cameraPosition.target.toString());
     }
 }

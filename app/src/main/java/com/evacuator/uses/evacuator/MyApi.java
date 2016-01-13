@@ -1,5 +1,6 @@
 package com.evacuator.uses.evacuator;
 
+import com.evacuator.uses.evacuator.Entity.Verification.entity.Result;
 import com.evacuator.uses.evacuator.Users;
 import com.evacuator.uses.evacuator.maps.entity.direction.GeocodedWaypoints;
 import com.evacuator.uses.evacuator.maps.entity.driver.location.Example;
@@ -46,10 +47,10 @@ public interface MyApi
     @POST("order/create?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS")
     Call<Users>get(@Body Users users);
 
-    @POST("/order/approve?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS")
+    @POST("order/by-key?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&expand=model,brand,driverer,statistics")
     Call<Example> getDriverInfo(@Query("key")String key);
 
-    @POST("order/by-key?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&expand=model,brand,driverer,statistics")
-    Call<Example> verifySms(@Query("orderId")String orderId,@Query("smsCode")String smsCode);
+    @POST("/order/approve?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNO")
+    Call<Result> verifySms(@Query("orderId")String orderId,@Query("smsCode")String smsCode);
 
 }

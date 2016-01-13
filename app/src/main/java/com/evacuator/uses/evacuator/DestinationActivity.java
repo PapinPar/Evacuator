@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.evacuator.uses.evacuator.maps.core.services.AddressService;
+import com.evacuator.uses.evacuator.maps.core.services.DriverCheckService;
 import com.evacuator.uses.evacuator.maps.entity.address.AddressComponent;
 import com.evacuator.uses.evacuator.maps.entity.address.Results;
 import com.evacuator.uses.evacuator.maps.entity.apies.AddresApi;
@@ -63,8 +65,10 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
     public String destId;
     private GoogleMap map;
     private double pathValue = 0.0;
+    private int pathTime = 0;
+    public MapDrawer drawer;
 
-    private Button confirmButton;
+    public Button confirmButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +101,14 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
 
-        if(destlatlang!=null && destAddress!=null ){
+        if(destlatlang!=null && destAddress!=null )
+        {
+            stopService(new Intent(this, DriverCheckService.class));
+            stopService(new Intent(this,AddressService.class));
+
             Intent intent = new Intent(this,OrderNewActivity.class);
             intent.putExtra("mylatlng",mylatlng);
             intent.putExtra("myAddress",""+myAddress);
@@ -109,7 +118,10 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
             intent.putExtra("destAddress",""+destAddress);
             intent.putExtra("destId",""+destId);
 
-            intent.putExtra("path",pathValue/1000);
+            intent.putExtra("path", pathValue / 1000);
+            intent.putExtra("pathTime", pathTime);
+
+
 
             startActivity(intent);
         }
@@ -235,12 +247,15 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
     public ArrayList<LatLng> getDirection(GeocodedWaypoints geopoints)
     {
+        String path  = geopoints.getRoutes().get(0).getLegs().get(0).getDuration().getText().split(" ")[0];
+        pathTime= Integer.parseInt(path);
         List<Step> steps = geopoints.getRoutes().get(0).getLegs().get(0).getSteps();
         NodeList nl1, nl2, nl3;
         ArrayList<LatLng> listGeopoints = new ArrayList<LatLng>();
         for (int i = 0; i < steps.size(); i++) {
             Step step  = steps.get(i);
             StartLocation_ startLocation_ = step.getStartLocation();
+
 
 
             double lat = startLocation_.getLat();

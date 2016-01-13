@@ -4,6 +4,7 @@ package com.evacuator.uses.evacuator;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Address;
@@ -22,6 +23,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.evacuator.uses.evacuator.maps.core.broadcasts.AddressBroadcast;
+import com.evacuator.uses.evacuator.maps.core.broadcasts.DriverCheckBroadcast;
+import com.evacuator.uses.evacuator.maps.core.services.AddressService;
+import com.evacuator.uses.evacuator.maps.core.services.DriverCheckService;
 import com.evacuator.uses.evacuator.maps.entity.address.AddressComponent;
 import com.evacuator.uses.evacuator.maps.entity.address.Results;
 import com.evacuator.uses.evacuator.maps.entity.apies.AddresApi;
@@ -64,15 +69,14 @@ import retrofit.Retrofit;
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, PlaceSelectionListener, View.OnClickListener {
 
     private GoogleMap map;
-    private Button confirmButton;
-    private String myAddress;
+    public Button confirmButton;
+    public String myAddress;
     private GoogleApiClient mGoogleApiClient;
     private LatLng mylatlng;
     private String myId;
     private final int MY_PERMISSIONS_REQUEST = 21;
     private boolean pirmission_granted = false;
-
-;
+    public MapDrawer drawer;
 
 
     @Override
@@ -97,6 +101,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         autocompleteFragment.getView().setBackgroundColor(0);
         autocompleteFragment.setOnPlaceSelectedListener(this);
         autocompleteFragment.getView().setBackgroundColor(Color.WHITE);
+
+        AddressBroadcast broadcast = new AddressBroadcast(this);
+        IntentFilter intFilt = new IntentFilter("MY_BROADCAST_ADDRESS");
+        registerReceiver(broadcast, intFilt);
+
 
     }
 
@@ -140,6 +149,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        drawer = new MapDrawer(map,this);
         initMap();
         if (pirmission_granted == true)
             drawMyLocation();
@@ -148,11 +158,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public void drawMyLocation() {
         Location mylocation = getLocation();
+
+
         if (mylocation != null) {
             mylatlng = new LatLng(mylocation.getLatitude(), mylocation.getLongitude());
-            getAddress(mylatlng.latitude, mylatlng.longitude);
+            Intent intent = new Intent(this, AddressService.class);
+            intent.putExtra("lng",mylocation.getLongitude());
+            intent.putExtra("lat",mylocation.getLatitude());
+            startService(intent);
         }
-
+/*
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(mylatlng)
                 .zoom(15)
@@ -161,20 +176,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         map.animateCamera(cameraUpdate);
         confirmButton.setText(myAddress);
         addMarker(mylatlng, myAddress);
-    }
-
-    public void addMarker(LatLng latlng, String address) {
-        map.addMarker(new MarkerOptions()
-                .position(latlng)
-                .title(address))
-                .setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.pincar));
-
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(latlng)
-                .zoom(15)
-                .build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-        map.animateCamera(cameraUpdate);
+        */
     }
 
     public void initMap() {
@@ -215,9 +217,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         return location;
     }
 
-    private void getAddress(double latitude,double longitude){
-        request(latitude,longitude);
-    }
+
 
     @Override
     public void onPlaceSelected(Place place) {
@@ -226,7 +226,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mylatlng = place.getLatLng();
         myId = place.getId();
         map.clear();
-        addMarker(mylatlng, myAddress);
+        Intent intent = new Intent(this, AddressService.class);
+        intent.putExtra("lng",mylatlng.longitude);
+        intent.putExtra("lat",mylatlng.latitude);
+        startService(intent);
     }
 
     /**
@@ -248,39 +251,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         intent.putExtra("id", "" + myId);
         startActivity(intent);
     }
-    private void request(double latitude,double longitude)
-    {
 
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://maps.googleapis.com/maps/api/")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        AddresApi api = retrofit.create(AddresApi.class);
-
-        String param1 = latitude+","+longitude;
-        Call<Results> usersCall = api.get(param1);
-        usersCall.enqueue(new Callback<Results>() {
-            @Override
-            public void onResponse(Response<Results> response, Retrofit retrofit) {
-
-                Results results = response.body();
-                List<AddressComponent> component = results.getResults().get(0).getAddressComponents();
-                myAddress = component.get(3).getLongName() + " ," + component.get(1).getLongName() + "," + component.get(0).getLongName();
-
-                confirmButton.setText(myAddress);
-                Toast.makeText(getApplicationContext(), myAddress, Toast.LENGTH_SHORT).show();
-            }
-
-            public void onFailure(Throwable t) {
-                Log.d("SD", "SD2");
-                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {

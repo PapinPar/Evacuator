@@ -36,9 +36,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:id="@+id/relativeLayout"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/RelativeLayout"
-                android:layout_toStartOf="@+id/RelativeLayout">
+                android:layout_alignParentTop="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,32 +105,24 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="16dp"
                     android:textColor="@color/colorTextFont" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:gravity="right"
-                android:id="@+id/RelativeLayout"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignBottom="@+id/relativeLayout">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#ff0000"
+                    android:background="#37ff00"
                     android:textColor="@color/colorTextButton"
                     android:theme="@android:style/Theme.Dialog"
                     android:text="В пути"
                     android:textSize="16dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_weight="0.3"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp" />
-
+                    android:paddingRight="10dp"
+                    android:layout_above="@+id/imageView3"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:id="@+id/status" />
             </RelativeLayout>
         </RelativeLayout>
 

@@ -25,10 +25,10 @@ public class Tarif {
     private List<Integer> evacuatorTypes = new ArrayList<Integer>();
     @SerializedName("weight_from")
     @Expose
-    private Integer weightFrom;
+    private Double weightFrom;
     @SerializedName("weight_to")
     @Expose
-    private Integer weightTo;
+    private Double weightTo;
     @SerializedName("price_loading")
     @Expose
     private Integer priceLoading;
@@ -116,7 +116,7 @@ public class Tarif {
      * @return
      * The weightFrom
      */
-    public Integer getWeightFrom() {
+    public Double getWeightFrom() {
         return weightFrom;
     }
 
@@ -125,7 +125,7 @@ public class Tarif {
      * @param weightFrom
      * The weight_from
      */
-    public void setWeightFrom(Integer weightFrom) {
+    public void setWeightFrom(Double weightFrom) {
         this.weightFrom = weightFrom;
     }
 
@@ -134,7 +134,7 @@ public class Tarif {
      * @return
      * The weightTo
      */
-    public Integer getWeightTo() {
+    public Double getWeightTo() {
         return weightTo;
     }
 
@@ -143,7 +143,7 @@ public class Tarif {
      * @param weightTo
      * The weight_to
      */
-    public void setWeightTo(Integer weightTo) {
+    public void setWeightTo(Double weightTo) {
         this.weightTo = weightTo;
     }
 

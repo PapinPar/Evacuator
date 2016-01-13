@@ -30,7 +30,7 @@ public class MapDrawer {
         this.context = context;
     }
     public void addMarker(LatLng latlng, String address,int picRecource) {
-        if(picRecource<0) {
+        if(picRecource!=-111222111) {
             map.addMarker(new MarkerOptions()
                     .position(latlng)
                     .title(address))

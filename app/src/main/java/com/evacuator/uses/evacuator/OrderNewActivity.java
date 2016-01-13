@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,16 +49,19 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
     private String destAddress;
     private String destId;
     private String wight;
+    private Boolean one=false,two=false,three=false;
 
-    ArrayList<String> brands = new ArrayList<String>();
-    ArrayList<String> modelsId = new ArrayList<String>();
-    ArrayList<String> modelsName = new ArrayList<String>();
-    ArrayList<String> modelsWight = new ArrayList<String>();
-    ArrayList<String> brandsFill = new ArrayList<String>();
-    int car_type;
-    int idBrand,idModel;
+    private ArrayList<String> brands = new ArrayList<String>();
+    private ArrayList<String> TarifsInfo = new ArrayList<String>();
+    private  ArrayList<String> modelsId = new ArrayList<String>();
+    private ArrayList<String> modelsName = new ArrayList<String>();
+    private ArrayList<String> modelsWight = new ArrayList<String>();
+    private ArrayList<String> brandsFill = new ArrayList<String>();
+    private  int car_type;
+    private int idBrand,idModel;
     private double pathValue;
     Spinner spine,spinner;
+    RelativeLayout ModLay,BrandLay;
     TextView date,date_invis, toEdit, fromEdit;
     DialogFragment Calendar,Time;
     protected void onCreate(Bundle savedInstanceState)
@@ -65,6 +69,10 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Intent intent = getIntent();
+        ModLay = (RelativeLayout)findViewById(R.id.modelLay);
+        ModLay.setVisibility(View.INVISIBLE);
+        BrandLay = (RelativeLayout)findViewById(R.id.brandLay);
+        BrandLay.setVisibility(View.INVISIBLE);
         mylatlng = intent.getParcelableExtra("mylatlng");
         myAddress = (intent.getStringExtra("myAddress"));
         myId = (intent.getStringExtra("myId"));
@@ -101,7 +109,7 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         });
-            String[] data = {"Мотоцикл", "Легковая", " Джип \\ Минивэн", " Грузовая",};
+        String[] data = {"Выберите тип ТС","Мотоцикл", "Легковая", " Джип \\ Минивэн", " Грузовая",};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -110,17 +118,26 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         spine.setAdapter(adapter);
         spine.setPrompt("Тип транспортного средства");
         spine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                car_type= 0;
-                if (position == 0)
-                    car_type = 6;
-                if (position == 1)
-                    car_type = 1;
-                if (position == 2)
-                    car_type = 2;
-                if (position == 3)
-                    car_type = 4;
-                start(car_type);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                if(one==true)
+                {
+                    if(position!=0)
+                    {
+                        car_type= 0;
+                        if (position == 1)
+                            car_type = 6;
+                        if (position == 2)
+                            car_type = 1;
+                        if (position == 3)
+                            car_type = 2;
+                        if (position == 4)
+                            car_type = 4;
+                        start(car_type);
+                    }
+                }
+                else
+                    one=true;
             }
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -130,24 +147,26 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
 
     private void start(int position)
     {
-        if(position!=6)
+        if(position!=6&&position!=0)
         {
-            String[] data = {"Мотоцикл", "Легковая", " Джип \\ Минивэн", " Грузовая",};
             LinearLayout line = (LinearLayout)findViewById(R.id.for_auto);
             line.setVisibility(View.VISIBLE);
-            request2(position);
+            BrandLay.setVisibility(View.VISIBLE);
+            getBrand(position);
         }
         else
         {
             LinearLayout line = (LinearLayout)findViewById(R.id.for_auto);
-            line.setVisibility(View.GONE);
+            line.setVisibility(View.INVISIBLE);
         }
     }
 
-    private void request2(final int id)
+    private void getBrand(final int id)
     {
         brands.clear();
         brandsFill.clear();
+        brandsFill.add("Выберите марку");
+        brands.add("");
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
@@ -165,16 +184,16 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                     brandsFill.add(String.valueOf(model.get(i).getName()));
                     brands.add(String.valueOf(model.get(i).getId()));
                 }
-                spin(id);
+                fillBrand(id);
             }
 
             public void onFailure(Throwable t) {
-                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "BAD connection", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void spin(final int carType)
+    private void fillBrand(final int carType)
     {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, brandsFill);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -184,9 +203,17 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                idBrand = position + 1;
-                brand = brands.get(position);
-                request3(Integer.parseInt(brands.get(position)),carType);
+                if(position==0)
+                    ModLay.setVisibility(View.INVISIBLE);
+                if(two==true&&position!=0)
+                {
+                    idBrand = position + 1;
+                    brand = brands.get(position);
+                    ModLay.setVisibility(View.VISIBLE);
+                    getModel(Integer.parseInt(brands.get(position)), carType);
+                }
+                else
+                    two=true;
             }
             public void onNothingSelected(AdapterView<?> parent)
             {
@@ -196,11 +223,15 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         spinner.setPrompt("Марка транспортного средства");
     }
 
-    private void request3(int idBrand,int carType)
+    private void getModel(int idBrand,int carType)
     {
         modelsName.clear();
         modelsId.clear();
         modelsWight.clear();
+
+        modelsId.add("");
+        modelsName.add("Выберите Модель");
+        modelsWight.add("");
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
@@ -220,16 +251,16 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                     modelsWight.add(String.valueOf(models.get(i).getWeight()));
                     modelsId.add(String.valueOf(models.get(i).getId()));
                 }
-                spiner();
+                fillModel();
             }
 
             public void onFailure(Throwable t) {
-                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "BAD Connection", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void spiner()
+    private void fillModel()
     {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, modelsName);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -237,15 +268,17 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                model = modelsId.get(position);
-                wight = modelsWight.get(position);
-                request4();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (three == true && position != 0) {
+                    model = modelsId.get(position);
+                    wight = modelsWight.get(position);
+                    getWight();
+                } else
+                    three = true;
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> parent) {
                 model = modelsId.get(0);
             }
         });
@@ -261,8 +294,9 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         fromEdit.setText(myAddress);
     }
 
-    private void request4()
+    private void getWight()
     {
+        TarifsInfo.clear();
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
@@ -274,21 +308,47 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         Call<List<Tarif>> usersCall = api.getTarif();
         usersCall.enqueue(new Callback<List<Tarif>>() {
             @Override
-            public void onResponse(Response<List<Tarif>> response, Retrofit retrofit)
-            {
+            public void onResponse(Response<List<Tarif>> response, Retrofit retrofit) {
                 List<Tarif> tarifs = response.body();
-                Log.d("sd","SD");
+                Double Wight = Double.parseDouble(wight);
+                for (int i = 0; i < tarifs.size(); i++) {
+                    if (tarifs.get(i).getId() != 11) {
+                        if (tarifs.get(i).getWeightFrom() <= Wight && tarifs.get(i).getWeightTo() >= Wight && tarifs.get(i).getCarTypes().get(0) == car_type) {
+                            TarifsInfo.add(tarifs.get(i).getName());
+                            TarifsInfo.add(String.valueOf(tarifs.get(i).getPriceLoading()));
+                            TarifsInfo.add(String.valueOf(tarifs.get(i).getPriceKm()));
+                            TarifsInfo.add(String.valueOf(tarifs.get(i).getPriceMinute()));
+                            TarifsInfo.add(String.valueOf(Wight));
+                        }
+                    }
+                }
+                setWight();
             }
 
             public void onFailure(Throwable t) {
-                Toast.makeText(getApplicationContext(), "BAD", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "BAD connection", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
+    private void setWight()
+    {
+        TextView priceLoad = (TextView)findViewById(R.id.price_load);
+        priceLoad.setText(TarifsInfo.get(1).toString());
+        TextView priceKm = (TextView)findViewById(R.id.price_kmAndMin);
+        priceKm.setText("далее 1км.("+TarifsInfo.get(2).toString()+" руб.) + 1 мин.("+TarifsInfo.get(3).toString()+" руб.)");
+    }
+
+
     @Override
     public void onClick(View v)
     {
+        Double pathTime = getIntent().getDoubleExtra("pathTime", 0);
+        Double pathValue = getIntent().getDoubleExtra("path", 0);
+        Double sum = Double.parseDouble(TarifsInfo.get(1));
+        sum = sum +pathValue*Double.parseDouble(TarifsInfo.get(2));
+        //sum = sum +(Integer.parseInt(pathTime)*Integer.parseInt(TarifsInfo.get(3)));
         switch (v.getId())
         {
             case R.id.create_order_1:
@@ -306,9 +366,12 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                 next_order.putExtra("idModel",String.valueOf(model));
                 next_order.putExtra("car_type",String.valueOf(car_type));
                 next_order.putExtra("time",date.getText().toString());
+                next_order.putExtra("SUM",sum);
+
                 startActivity(next_order);
                 break;
         }
     }
+
 }
 

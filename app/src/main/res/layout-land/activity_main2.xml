@@ -1,6 +1,394 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.evacuator.uses.evacuator.MainActivity"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#9c9c9c">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/tollbar"
+        android:id="@+id/include"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="5"
+        android:layout_weight="0.88">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="1.1">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:weightSum="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/icon_marshrut"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:layout_marginBottom="1dp">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:foregroundGravity="center">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="Москва"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorTextFont"
+                            android:id="@+id/adress_otkuda" />
+                    </ScrollView>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:weightSum="1"
+                    android:background="#ffffff">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Куда?"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/adress_kuda" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:background="#ffffff"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@mipmap/icon_time" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|left"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ближайшее время"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorTextFont"
+                    android:id="@+id/date" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|right"
+                android:layout_weight="0.99">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:text="Сегодня, 20:30"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/colorTextGeneral"
+                    android:visibility="gone"
+                    android:id="@+id/date_insiv" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:weightSum="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:background="@mipmap/legkovaya"
+                android:layout_weight="0.08"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dialog"
+                android:layout_weight="0.92"
+                android:id="@+id/car_type">
+
+            </Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="horizontal"
+            android:layout_weight="1.95"
+            android:weightSum="2"
+            android:visibility="visible"
+            android:id="@+id/for_auto">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|center_vertical"
+                android:background="#ffffff">
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@mipmap/avto"
+                    android:layout_marginLeft="13dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight="1.99">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <Spinner
+                        android:layout_width="101dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/spin_brand"
+                        android:layout_weight="1.37"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toRightOf="@+id/auto_brand"
+                        android:layout_toEndOf="@+id/auto_brand"
+                        android:spinnerMode="dialog" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Выберите марку   "
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/auto_brand"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:background="#ffffff"
+                    android:layout_marginTop="1dp">
+
+                    <Spinner
+                        android:layout_width="101dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/spin_model"
+                        android:layout_weight="1.10"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toRightOf="@+id/auto_model"
+                        android:layout_toEndOf="@+id/auto_model"
+                        android:spinnerMode="dialog" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Выберите модель"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/auto_model"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:layout_weight=".12">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#dddddd"
+            android:layout_weight="0.02"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:weightSum="3"
+            android:layout_weight="0.98"
+            android:background="#ffffff">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="ПОГРУЗКА/РАЗГРУЗКА"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/colorTextFont" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="1800 Р"
+                android:layout_weight="1"
+                android:textColor="@color/colorTextGeneral" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="далее 1км.(22 руб.) + 1 мин.(12 руб.)"
+                android:id="@+id/textView3"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textColor="@color/colorTextGeneral" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.98"
+            android:weightSum="3"
+            android:background="#dddddd"
+            android:layout_marginTop="1dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Далее"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:id="@+id/create_order_1"
+                android:theme="@android:style/Theme.Dialog"
+                android:background="@drawable/shape_button"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorTextButton"
+                android:layout_weight="0.5"
+                android:layout_marginBottom="15dp"
+                android:onClick="onClick" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

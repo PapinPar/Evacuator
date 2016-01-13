@@ -24,41 +24,34 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="0.1"
-            android:weightSum="4">
+            android:layout_weight="1"
+            android:weightSum="4"
+            android:gravity="center">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@mipmap/kuzov"
-                android:layout_weight="0.8"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_weight="0.9"
+                android:layout_margin="10dp" />
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@mipmap/posadka"
-                android:layout_weight="0.8"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_weight="0.9"
+                android:layout_margin="10dp" />
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@mipmap/blockrul"
-                android:layout_weight="0.8"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_weight="0.9"
+                android:layout_margin="10dp" />
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@mipmap/blockkoles"
-                android:layout_weight="0.8"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_weight="0.9"
+                android:layout_margin="10dp" />
 
 
         </LinearLayout>
@@ -66,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:weightSum="4"
             android:gravity="center_vertical">
 
@@ -109,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:gravity="center"
             android:weightSum="4">
 

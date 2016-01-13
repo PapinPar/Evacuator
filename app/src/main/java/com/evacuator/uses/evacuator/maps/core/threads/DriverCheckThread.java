@@ -71,13 +71,14 @@ public class DriverCheckThread implements Runnable {
 
                 Example result = response.body();
                 LatLng driverlatlang = new LatLng(result.getGpsLatitude(),result.getGpsLongitude());
+                status = result.getStatusName();
 
                 intent.putExtra("address",customizeText(result.getAddress()));
                 intent.putExtra("latlng",driverlatlang);
                 intent.putExtra("model",result.getModel().getName());
                 intent.putExtra("brand",result.getBrand().getName());
                 intent.putExtra("status",status);
-                status = result.getStatusName();
+
                 service.sendBroadcast(intent);
             }
 

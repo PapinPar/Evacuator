@@ -8,6 +8,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Result {
+
     @SerializedName("result")
     @Expose
     private Integer result;
@@ -16,9 +17,26 @@ public class Result {
     private String resultMessage;
 
     /**
+     * No args constructor for use in serialization
+     *
+     */
+    public Result() {
+    }
+
+    /**
+     *
+     * @param result
+     * @param resultMessage
+     */
+    public Result(Integer result, String resultMessage) {
+        this.result = result;
+        this.resultMessage = resultMessage;
+    }
+
+    /**
      *
      * @return
-     *     The result
+     * The result
      */
     public Integer getResult() {
         return result;
@@ -27,7 +45,7 @@ public class Result {
     /**
      *
      * @param result
-     *     The result
+     * The result
      */
     public void setResult(Integer result) {
         this.result = result;
@@ -36,7 +54,7 @@ public class Result {
     /**
      *
      * @return
-     *     The resultMessage
+     * The resultMessage
      */
     public String getResultMessage() {
         return resultMessage;
@@ -45,7 +63,7 @@ public class Result {
     /**
      *
      * @param resultMessage
-     *     The resultMessage
+     * The resultMessage
      */
     public void setResultMessage(String resultMessage) {
         this.resultMessage = resultMessage;

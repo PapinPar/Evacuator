@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.evacuator.uses.evacuator.Entity.MyApi;
 import com.evacuator.uses.evacuator.Entity.Verification.entity.Result;
 import com.evacuator.uses.evacuator.maps.entity.address.AddressComponent;
 import com.evacuator.uses.evacuator.maps.entity.address.Results;
@@ -37,7 +38,7 @@ public class ValidationActivity extends AppCompatActivity implements View.OnClic
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.order_by_phone);
-        confirm = (Button)findViewById(R.id.imageButton);
+        confirm = (Button)findViewById(R.id.getCode);
     }
 
     @Override
@@ -59,19 +60,13 @@ public class ValidationActivity extends AppCompatActivity implements View.OnClic
         String orderId = ""+123;
         String smsCode = code.getText().toString();
 
-        Call<Result> usersCall = api.verifySms(orderId, smsCode);
+        Call<Result> usersCall = api.verifySms(Integer.parseInt(orderId), smsCode);
         usersCall.enqueue(new Callback<Result>() {
             @Override
-            public void onResponse(Response<Result> response, Retrofit retrofit) {
-
+            public void onResponse(Response<Result> response, Retrofit retrofit)
+            {
                 Result result = response.body();
                 Log.d("result", result.getResult()+" : "+result.getResultMessage());
-                /*List<AddressComponent> component = results.getResults().get(0).getAddressComponents();
-                String address = component.get(3).getLongName() + " ," + component.get(1).getLongName() + "," + component.get(0).getLongName();
-                intent.putExtra("address", address);
-                intent.putExtra("latlng",new LatLng(latitude,longitude));
-                service.sendBroadcast(intent);
-                */
             }
 
             public void onFailure(Throwable t) {

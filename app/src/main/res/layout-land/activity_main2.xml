@@ -22,90 +22,88 @@
         android:weightSum="5"
         android:layout_weight="0.88">
 
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="120dp"
             android:orientation="horizontal"
-            android:weightSum="4"
-            android:layout_weight="1">
+            android:weightSum="2"
+            android:layout_weight="1.1">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_weight="3.3"
-                android:background="#ffffff">
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/shape_image1"
-                    android:text="A"
-                    android:textSize="24dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorButton" />
+                android:background="#ffffff"
+                android:weightSum="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/icon_marshrut"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+
             </LinearLayout>
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:layout_weight="0.7"
-                android:background="#ffffff"
-                android:layout_marginBottom="1dp">
+                android:weightSum="2"
+                android:layout_weight="2">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="Москва"
-                    android:textSize="20dp"
-                    android:textColor="@color/colorTextFont"
-                    android:id="@+id/adress_otkuda" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+                    android:layout_marginBottom="1dp">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:foregroundGravity="center">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="Москва"
+                            android:textSize="20dp"
+                            android:textColor="@color/colorTextFont"
+                            android:id="@+id/adress_otkuda" />
+                    </ScrollView>
+                </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:gravity="center_vertical"
-            android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_weight="3.3"
-                android:background="#ffffff">
-                <Button
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/shape_image1"
-                    android:text="B"
-                    android:textSize="24dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorButton" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:weightSum="1"
+                    android:background="#ffffff">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Куда?"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/adress_kuda" />
+                </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_weight="0.7"
-                android:weightSum="1"
-                android:background="#ffffff">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Куда?"
-                    android:textSize="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="@color/colorTextFont"
-                    android:id="@+id/adress_kuda" />
-            </LinearLayout>
+
+
         </LinearLayout>
+
 
 
         <LinearLayout
@@ -121,41 +119,41 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="horizontal"
-            android:weightSum="4"
+            android:weightSum="2"
             android:background="#ffffff"
             android:layout_weight="1">
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24dp"
+                    android:layout_marginLeft="12dp"
+                    android:background="@mipmap/icon_time" />
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_weight="1.65">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:textSize="24dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@mipmap/clock" />
-
+                android:orientation="horizontal"
+                android:gravity="center_vertical|left"
+                android:layout_weight="1">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ближайшее время"
-                    android:textSize="20dp"
+                    android:textSize="16dp"
                     android:layout_marginLeft="10dp"
                     android:textColor="@color/colorTextFont"
                     android:id="@+id/date" />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical|left"></LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center_vertical|right"
-                android:layout_weight="0.85">
+                android:layout_weight="0.99">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -175,28 +173,33 @@
             android:background="#dddddd"
             android:layout_weight="0.02"
             android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp" />
+            android:layout_marginBottom="1dp">
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="0.1"
             android:weightSum="1"
-            android:background="#ffffff">
+            android:gravity="center">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:background="@mipmap/icon_car"
-                android:layout_weight="0.08" />
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:background="@mipmap/legkovaya"
+                android:layout_weight="0.08"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:spinnerMode="dialog"
                 android:layout_weight="0.92"
-                android:id="@+id/car_type" />
+                android:id="@+id/car_type">
+
+            </Spinner>
         </LinearLayout>
 
         <LinearLayout
@@ -204,45 +207,42 @@
             android:layout_height="20dp"
             android:background="#dddddd"
             android:layout_weight="0.02"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp">
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:orientation="horizontal"
-            android:weightSum="4"
+            android:layout_weight="1.95"
+            android:weightSum="2"
             android:visibility="visible"
-            android:id="@+id/for_auto"
-            android:background="#ffffff"
-            android:layout_weight="1">
+            android:id="@+id/for_auto">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="3.3"
-                android:gravity="center_vertical"
+                android:gravity="center|center_vertical"
                 android:background="#ffffff">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:background="@mipmap/avto"
-                    android:layout_marginLeft="10dp" />
+                    android:layout_marginLeft="13dp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:weightSum="2"
-                android:layout_weight="0.7">
+                android:layout_weight="1.99">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:id="@+id/brandLay"
                     android:layout_gravity="center_vertical"
                     android:background="#ffffff">
 
@@ -254,10 +254,20 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:spinnerMode="dialog"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
+                        android:layout_toRightOf="@+id/auto_brand"
+                        android:layout_toEndOf="@+id/auto_brand"
+                        android:spinnerMode="dialog" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Выберите марку   "
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/auto_brand"
+                        android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -265,9 +275,9 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:id="@+id/modelLay"
                     android:layout_gravity="center_vertical"
-                    android:background="#ffffff">
+                    android:background="#ffffff"
+                    android:layout_marginTop="1dp">
 
                     <Spinner
                         android:layout_width="101dp"
@@ -277,18 +287,20 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentEnd="true"
-                        android:spinnerMode="dialog"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true" />
+                        android:layout_toRightOf="@+id/auto_model"
+                        android:layout_toEndOf="@+id/auto_model"
+                        android:spinnerMode="dialog" />
 
-                    <ImageView
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imageView5"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/iconseparator"
-                        android:background="#9d9d9d" />
+                        android:layout_height="match_parent"
+                        android:text="Выберите модель"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorTextFont"
+                        android:id="@+id/auto_model"
+                        android:textStyle="bold" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -299,15 +311,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:layout_weight=".12">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:background="#dddddd"
-            android:layout_marginTop="2dp">
+            android:layout_weight="0.02"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp">
         </LinearLayout>
 
         <LinearLayout
@@ -316,6 +331,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:weightSum="3"
+            android:layout_weight="0.98"
             android:background="#ffffff">
             <TextView
                 android:layout_width="match_parent"
@@ -332,14 +348,13 @@
                 android:textSize="24dp"
                 android:text="1800 Р"
                 android:layout_weight="1"
-                android:textColor="@color/colorTextGeneral"
-                android:id="@+id/price_load" />
+                android:textColor="@color/colorTextGeneral" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="далее 1км.(22 руб.) + 1 мин.(12 руб.)"
-                android:id="@+id/price_kmAndMin"
+                android:id="@+id/textView3"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
                 android:textColor="@color/colorTextGeneral" />
@@ -350,6 +365,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_weight="0.98"
             android:weightSum="3"
             android:background="#dddddd"
             android:layout_marginTop="1dp">

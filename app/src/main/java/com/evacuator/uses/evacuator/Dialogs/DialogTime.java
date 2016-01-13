@@ -51,7 +51,7 @@ public class DialogTime extends DialogFragment implements View.OnClickListener{
                 break;
             case R.id.btnBackCal:
                 w= (TextView) getActivity().findViewById(R.id.date);
-                w.setText("Ближайшее");
+                w.setText("Ближайшее время");
                 dismiss();
                 break;
         }

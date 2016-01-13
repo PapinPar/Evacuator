@@ -22,7 +22,7 @@ private Integer modelId;
 private String receiveDate;
 @SerializedName("weight")
 @Expose
-private Integer weight;
+private Double weight;
 @SerializedName("blocked_wheels")
 @Expose
 private Boolean blockedWheels;
@@ -142,7 +142,7 @@ private List<Object> additionalServices = new ArrayList<Object>();
         }
 
 
-        public Users(Integer brandId, Integer modelId, String receiveDate, Integer weight, Boolean blockedWheels, Integer blockedWheelsCnt, Boolean blockedSteeringWheel, Boolean lowLanding, String phone, Integer carType, Double gpsLongitude, Double gpsLatitude, String address, Boolean manipulatorRequired, String destinationAddress, String comment, Boolean fromWebsite, Integer commission, Integer paymentType, Object agentCommission, Integer createdAt, Integer updatedAt, Integer price, String ukey, Integer status, Boolean tariffFound, String tariffName, Integer tariffPriceLoading, Integer tariffPriceKm, Integer tariffPriceMinute, Integer tariffPriceBlockedWheel, Integer tariffPriceBlockedSteeringWheel, Integer tariffIncludedMileage, Integer tariffDiscountWebsite, Integer id, Object distance, Object currentUserId, String statusName, Integer isCancelable, Integer isPayed, Integer fromAgent, List<Object> additionalServices) {
+        public Users(Integer brandId, Integer modelId, String receiveDate, Double weight, Boolean blockedWheels, Integer blockedWheelsCnt, Boolean blockedSteeringWheel, Boolean lowLanding, String phone, Integer carType, Double gpsLongitude, Double gpsLatitude, String address, Boolean manipulatorRequired, String destinationAddress, String comment, Boolean fromWebsite, Integer commission, Integer paymentType, Object agentCommission, Integer createdAt, Integer updatedAt, Integer price, String ukey, Integer status, Boolean tariffFound, String tariffName, Integer tariffPriceLoading, Integer tariffPriceKm, Integer tariffPriceMinute, Integer tariffPriceBlockedWheel, Integer tariffPriceBlockedSteeringWheel, Integer tariffIncludedMileage, Integer tariffDiscountWebsite, Integer id, Object distance, Object currentUserId, String statusName, Integer isCancelable, Integer isPayed, Integer fromAgent, List<Object> additionalServices) {
             this.brandId = brandId;
             this.modelId = modelId;
             this.receiveDate = receiveDate;
@@ -246,7 +246,7 @@ private List<Object> additionalServices = new ArrayList<Object>();
          * @return
          * The weight
          */
-        public Integer getWeight() {
+        public Double getWeight() {
             return weight;
         }
 
@@ -255,7 +255,7 @@ private List<Object> additionalServices = new ArrayList<Object>();
          * @param weight
          * The weight
          */
-        public void setWeight(Integer weight) {
+        public void setWeight(Double weight) {
             this.weight = weight;
         }
 
@@ -291,7 +291,7 @@ private List<Object> additionalServices = new ArrayList<Object>();
          * @param blockedWheelsCnt
          * The blocked_wheels_cnt
          */
-        public void setBlockedWheelsCnt(Integer blockedWheelsCnt) {
+        public void  setBlockedWheelsCnt(Integer blockedWheelsCnt) {
             this.blockedWheelsCnt = blockedWheelsCnt;
         }
 
@@ -942,5 +942,6 @@ private List<Object> additionalServices = new ArrayList<Object>();
         public void setAdditionalServices(List<Object> additionalServices) {
             this.additionalServices = additionalServices;
         }
+
 
 }

@@ -1,4 +1,4 @@
-package com.evacuator.uses.evacuator;
+package com.evacuator.uses.evacuator.Order;
 
 import android.app.DialogFragment;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,11 +21,11 @@ import com.evacuator.uses.evacuator.Entity.Brand.NewBrands;
 import com.evacuator.uses.evacuator.Entity.Model.NewModels;
 import com.evacuator.uses.evacuator.Entity.MyApi;
 import com.evacuator.uses.evacuator.Entity.Tarifs.Tarif;
+import com.evacuator.uses.evacuator.R;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
     private LatLng destlatlng;
     private String destAddress;
     private String destId;
-    private String wight;
+    private Double wight;
     private Boolean one=false,two=false,three=false;
 
     private ArrayList<String> brands = new ArrayList<String>();
@@ -104,7 +103,7 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!date_invis.getText().toString().equals("Ближайшее")) {
+                if (!date_invis.getText().toString().equals("Ближайшее время")) {
                     Calendar = new DialogDate();
                     Calendar.show(getFragmentManager(), "Time");
                 }
@@ -272,7 +271,7 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (three == true && position != 0) {
                     model = modelsId.get(position);
-                    wight = modelsWight.get(position);
+                    wight = Double.valueOf(modelsWight.get(position));
                     getWight();
                 } else
                     three = true;
@@ -311,15 +310,14 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onResponse(Response<List<Tarif>> response, Retrofit retrofit) {
                 List<Tarif> tarifs = response.body();
-                Double Wight = Double.parseDouble(wight);
                 for (int i = 0; i < tarifs.size(); i++) {
                     if (tarifs.get(i).getId() != 11) {
-                        if (tarifs.get(i).getWeightFrom() <= Wight && tarifs.get(i).getWeightTo() >= Wight && tarifs.get(i).getCarTypes().get(0) == car_type) {
+                        if (tarifs.get(i).getWeightFrom() <= wight && tarifs.get(i).getWeightTo() >= wight && tarifs.get(i).getCarTypes().get(0) == car_type) {
                             TarifsInfo.add(tarifs.get(i).getName());
                             TarifsInfo.add(String.valueOf(tarifs.get(i).getPriceLoading()));
                             TarifsInfo.add(String.valueOf(tarifs.get(i).getPriceKm()));
                             TarifsInfo.add(String.valueOf(tarifs.get(i).getPriceMinute()));
-                            TarifsInfo.add(String.valueOf(Wight));
+                            TarifsInfo.add(String.valueOf(wight));
                         }
                     }
                 }
@@ -348,12 +346,8 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         int pathTime = getIntent().getIntExtra("pathTime", 0);
         Double pathValue = getIntent().getDoubleExtra("path", 0);
         Double sum = Double.parseDouble(TarifsInfo.get(1));
-        sum = sum +pathValue*Double.parseDouble(TarifsInfo.get(2));
-        BigDecimal s2;
-        s2 = new BigDecimal(String.valueOf(sum));
-        s2.setScale(0, BigDecimal.ROUND_HALF_UP).toString();
-        sum = Double.parseDouble(String.valueOf(s2));
-        //sum = sum +(Integer.parseInt(pathTime)*Integer.parseInt(TarifsInfo.get(3)));
+        sum = sum + pathValue*Double.parseDouble(TarifsInfo.get(2));
+        sum = sum + pathTime*Double.parseDouble(TarifsInfo.get(3));
         switch (v.getId())
         {
             case R.id.create_order_1:
@@ -370,9 +364,14 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                 next_order.putExtra("idBrand",String.valueOf(brand));
                 next_order.putExtra("idModel",String.valueOf(model));
                 next_order.putExtra("car_type",String.valueOf(car_type));
-                next_order.putExtra("time",date.getText().toString());
+                if(date.getText().toString().equals("Ближайшее время"))
+                    next_order.putExtra("time","");
+                else
+                    next_order.putExtra("time",date.getText().toString());
                 next_order.putExtra("SUM",sum);
-                next_order.putExtra("tarif_name",TarifsInfo.get(0).toString());
+                next_order.putExtra("weight",wight);
+                next_order.putExtra("gps_longitude",String.valueOf(mylatlng.longitude));
+                next_order.putExtra("gps_latitude", String.valueOf(mylatlng.latitude));
 
                     startActivity(next_order);
                 break;

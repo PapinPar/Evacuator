@@ -33,7 +33,7 @@ public class AddressBroadcast extends BroadcastReceiver {
         String address = intent.getStringExtra("address");
 
        if(activity ==null) {
-           destActivity.myAddress = address;
+           destActivity.destAddress = address;
            destActivity.confirmButton.setText(address);
            drawer = destActivity.drawer;
            drawer.bindAddressLast(address);

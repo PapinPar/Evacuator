@@ -46,7 +46,10 @@ public interface MyApi
     @POST("order/create?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS")
     Call<Users>get(@Body Users users);
 
-    @POST("order/by-key?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&expand=model,brand,driverer,statistics")
+    @POST("/order/approve?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS")
     Call<Example> getDriverInfo(@Query("key")String key);
+
+    @POST("order/by-key?access-token=WCgXZEmnOuiqWdiM0tQ-wS7KgldScNOS&expand=model,brand,driverer,statistics")
+    Call<Example> verifySms(@Query("orderId")String orderId,@Query("smsCode")String smsCode);
 
 }

@@ -53,9 +53,8 @@
         <activity android:name=".OrderNewActivity"></activity>
         <activity android:name=".OrderDetailsActivity"></activity>
         <activity android:name=".OrderInfoActivity"></activity>
-        <activity android:name=".DriverCheckActivity">
-
-        </activity>
+        <activity android:name=".DriverCheckActivity"></activity>
+        <activity android:name=".PaymentActivity"></activity>
 
 
         <service android:name=".maps.core.services.DriverCheckService"></service>

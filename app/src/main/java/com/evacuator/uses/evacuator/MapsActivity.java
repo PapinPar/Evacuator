@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Camera;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
@@ -20,6 +21,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,7 +68,9 @@ import retrofit.Retrofit;
 
 //home
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, PlaceSelectionListener, View.OnClickListener ,GoogleMap.OnCameraChangeListener{
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
+        PlaceSelectionListener, View.OnClickListener ,GoogleMap.OnCameraChangeListener,
+        GoogleMap.OnMapClickListener {
 
     private GoogleMap map;
     public Button confirmButton;
@@ -77,6 +81,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private final int MY_PERMISSIONS_REQUEST = 21;
     private boolean pirmission_granted = false;
     public MapDrawer drawer;
+    public TextView markerText;
 
 
     @Override
@@ -105,6 +110,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         AddressBroadcast broadcast = new AddressBroadcast(this);
         IntentFilter intFilt = new IntentFilter("MY_BROADCAST_ADDRESS");
         registerReceiver(broadcast, intFilt);
+
+        markerText = (TextView)findViewById(R.id.markerText);
     }
 
     private void checkPirmission() {
@@ -147,6 +154,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        map.setOnMapClickListener(this);
         map.setOnCameraChangeListener(this);
         drawer = new MapDrawer(map,this);
         initMap();
@@ -162,8 +170,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mylatlng = new LatLng(mylocation.getLatitude(), mylocation.getLongitude());
             Intent intent = new Intent(this, AddressService.class);
             intent.putExtra("lng",mylocation.getLongitude());
-            intent.putExtra("lat",mylocation.getLatitude());
+            intent.putExtra("lat", mylocation.getLatitude());
             startService(intent);
+            //markerText.setText();
+            drawer.cameraMove(mylatlng);
             drawer.addMarker(mylatlng, "", R.mipmap.pincar);
         }
     }
@@ -176,7 +186,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             return;
         }
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        map.setMyLocationEnabled(false);
+        map.setMyLocationEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(false);
         map.getUiSettings().setCompassEnabled(false);
         map.getUiSettings().setMapToolbarEnabled(false);
@@ -253,8 +263,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Log.d("permission","get permission");
                     pirmission_granted = true;
                     drawMyLocation();
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
 
                 } else {
 
@@ -264,8 +272,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return;
             }
 
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
@@ -273,6 +279,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onCameraChange(CameraPosition cameraPosition) {
         drawer.redrawMarker(cameraPosition.target,0);
         mylatlng=cameraPosition.target;
+       // if(markerText!=null)
+
         Log.d("cameara",cameraPosition.target.toString());
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        markerText.setVisibility(View.INVISIBLE);
     }
 }

@@ -44,19 +44,13 @@ public class MapDrawer {
                             .title(address);
         if(picRecource!=-111222111) {
             option.icon(BitmapDescriptorFactory.fromResource(picRecource));
-
-          /*  map.addMarker(new MarkerOptions()
-                    .position(latlng)
-                    .title(address))
-                    .setIcon(BitmapDescriptorFactory.fromResource(picRecource));
-                    */
         }
         markers.add(option);
-        map.addMarker(option);
-        drawMarker(option);
+        //map.addMarker(option);
+       // drawMarker(option);
 
     }
-    private void drawMarker(MarkerOptions option){
+    public void drawMarker(MarkerOptions option){
 
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -76,9 +70,9 @@ public class MapDrawer {
                 intent.putExtra("lng", latlng.longitude);
                 context.startService(intent);
                 map.clear();
-                for (MarkerOptions options : markers) {
+              /*  for (MarkerOptions options : markers) {
                     map.addMarker(options);
-                }
+                }*/
             }
         }
     }
@@ -112,6 +106,16 @@ public class MapDrawer {
 
     public void bindAddressLast(String address){
         markers.get(markers.size()-1).title(address);
+    }
+    public void cameraMove(LatLng latlang){
+
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(latlang)
+                .zoom(15)
+                .build();
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+        map.animateCamera(cameraUpdate);
     }
 
 }

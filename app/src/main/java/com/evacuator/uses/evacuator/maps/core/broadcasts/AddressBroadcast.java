@@ -3,6 +3,7 @@ package com.evacuator.uses.evacuator.maps.core.broadcasts;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 
 
 import com.evacuator.uses.evacuator.DestinationActivity;
@@ -42,8 +43,10 @@ public class AddressBroadcast extends BroadcastReceiver {
        {
            activity.myAddress = address;
            activity.confirmButton.setText(address);
-           drawer = activity.drawer;
-           drawer.bindAddressLast(address);
+         //  drawer = activity.drawer;
+//           drawer.bindAddressLast(address);
+           activity.markerText.setText(address);
+           activity.markerText.setVisibility(View.VISIBLE);
        }
 
        //drawer.addMarker(mylatlng,address, R.mipmap.pincar);

@@ -9,9 +9,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import com.evacuator.uses.evacuator.Entity.Brand.NewBrands;
 import com.evacuator.uses.evacuator.Entity.Model.NewModels;
 import com.evacuator.uses.evacuator.Entity.MyApi;
 import com.evacuator.uses.evacuator.Entity.Tarifs.Tarif;
+import com.evacuator.uses.evacuator.MapsActivity;
 import com.evacuator.uses.evacuator.R;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
@@ -49,7 +52,7 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
     private String destAddress;
     private String destId;
     private Double wight;
-    private Boolean one=false,two=false,three=false;
+    private Boolean one=false,two=false,three=false,manipul=false;
 
     private ArrayList<String> brands = new ArrayList<String>();
     private ArrayList<String> TarifsInfo = new ArrayList<String>();
@@ -60,9 +63,11 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
     private  int car_type;
     private int idBrand,idModel;
     private double pathValue;
+    Double sum;
     Spinner spine,spinner;
     RelativeLayout ModLay,BrandLay;
     TextView date,date_invis, toEdit, fromEdit;
+    TextView addres_otkuda;
     DialogFragment Calendar,Time;
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -80,7 +85,6 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         destAddress = (intent.getStringExtra("destAddress"));
         destId = (intent.getStringExtra("destId"));
         pathValue = intent.getDoubleExtra("path",pathValue);
-
         toEdit = (TextView)findViewById(R.id.adress_kuda);
 
         fromEdit = (TextView)findViewById(R.id.adress_otkuda);
@@ -118,13 +122,10 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
         spine.setAdapter(adapter);
         spine.setPrompt("Тип транспортного средства");
         spine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
-            {
-                if(one==true)
-                {
-                    if(position!=0)
-                    {
-                        car_type= 0;
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (one == true) {
+                    if (position != 0) {
+                        car_type = 0;
                         if (position == 1)
                             car_type = 6;
                         if (position == 2)
@@ -135,14 +136,24 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
                             car_type = 4;
                         start(car_type);
                     }
-                }
-                else
-                    one=true;
+                } else
+                    one = true;
             }
+
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
+        Switch need_mani = (Switch)findViewById(R.id.ned_man);
+        need_mani.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                if(isChecked)
+                    manipul = true;
+                else
+                    manipul = false;
+            }
+        });
     }
 
     private void start(int position)
@@ -286,14 +297,6 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-    @Override
-    protected void onResume()
-    {
-        super.onResume();
-        toEdit.setText(destAddress);
-        fromEdit.setText(myAddress);
-    }
-
     private void getWight()
     {
         TarifsInfo.clear();
@@ -343,40 +346,60 @@ public class OrderNewActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v)
     {
+
+try{
         int pathTime = getIntent().getIntExtra("pathTime", 0);
         Double pathValue = getIntent().getDoubleExtra("path", 0);
-        Double sum = Double.parseDouble(TarifsInfo.get(1));
+        sum = Double.parseDouble(TarifsInfo.get(1));
         sum = sum + pathValue*Double.parseDouble(TarifsInfo.get(2));
-        sum = sum + pathTime*Double.parseDouble(TarifsInfo.get(3));
-        switch (v.getId())
-        {
+        sum = sum + pathTime*Double.parseDouble(TarifsInfo.get(3));}
+catch (Exception e){}
+        switch (v.getId()) {
             case R.id.create_order_1:
-                Intent next_order = new Intent(this,OrderDetailsActivity.class);
-                if(car_type!=6)
-                {
-                    if(brand==null)
+                try {    Intent next_order = new Intent(this, OrderDetailsActivity.class);
+                if (car_type != 6) {
+                    if (brand == null)
                         brand = brands.get(0);
-                    if(model==null)
+                    if (model == null)
                         model = modelsId.get(0);
                 }
-                next_order.putExtra("myAddres",String.valueOf(myAddress));
-                next_order.putExtra("AddresWhen",String.valueOf(destAddress));
-                next_order.putExtra("idBrand",String.valueOf(brand));
-                next_order.putExtra("idModel",String.valueOf(model));
-                next_order.putExtra("car_type",String.valueOf(car_type));
-                if(date.getText().toString().equals("Ближайшее время"))
-                    next_order.putExtra("time","");
+                next_order.putExtra("myAddres", String.valueOf(myAddress));
+                next_order.putExtra("AddresWhen", String.valueOf(destAddress));
+                next_order.putExtra("idBrand", String.valueOf(brand));
+                next_order.putExtra("idModel", String.valueOf(model));
+                next_order.putExtra("car_type", String.valueOf(car_type));
+                if (date.getText().toString().equals("Ближайшее время"))
+                    next_order.putExtra("time", "");
                 else
-                    next_order.putExtra("time",date.getText().toString());
-                next_order.putExtra("SUM",sum);
-                next_order.putExtra("weight",wight);
-                next_order.putExtra("gps_longitude",String.valueOf(mylatlng.longitude));
+                    next_order.putExtra("time", date.getText().toString());
+                next_order.putExtra("SUM", sum);
+                next_order.putExtra("weight", wight);
+                next_order.putExtra("gps_longitude", String.valueOf(mylatlng.longitude));
                 next_order.putExtra("gps_latitude", String.valueOf(mylatlng.latitude));
+                next_order.putExtra("manipulator_required", manipul);
 
-                    startActivity(next_order);
+                startActivity(next_order);
                 break;
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(getApplicationContext(),"Введенны не все данные",Toast.LENGTH_SHORT).show();
+                }
+            case R.id.adress_otkuda:
+                Intent maps = new Intent(this, MapsActivity.class);
+                startActivityForResult(maps,1);
+                break;
+
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data==null)
+            return;
+        String addres = data.getStringExtra("address");
+        fromEdit.setText(addres);
+    }
 }
 

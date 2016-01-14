@@ -26,7 +26,7 @@ public class OrderDetailsActivity extends AppCompatActivity implements View.OnCl
     int count_wheels;
     EditText coment;
     TextView ALL_SUM;
-    Boolean blocked_wheels=false,blocked_steering_wheel=false,low_landing=false,need_manipul=false;
+    Boolean blocked_wheels=false,blocked_steering_wheel=false,low_landing=false,need_manipul;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -43,7 +43,7 @@ public class OrderDetailsActivity extends AppCompatActivity implements View.OnCl
         weight = getIntent().getDoubleExtra("weight", 0);
         gps_latitude = getIntent().getStringExtra("gps_latitude");
         gps_longitude = getIntent().getStringExtra("gps_longitude");
-
+        need_manipul = getIntent().getBooleanExtra("manipulator_required",false);
         coment = (EditText)findViewById(R.id.coments);
         ALL_SUM = (TextView)findViewById(R.id.all_cost);
         int a = (int) Math.round(sum);
@@ -77,20 +77,6 @@ public class OrderDetailsActivity extends AppCompatActivity implements View.OnCl
                 } else
                 {
                     low_landing = false;
-                }
-            }
-        });
-        final Switch manipul = (Switch) findViewById(R.id.check_1);
-        manipul.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
-                if (isChecked)
-                {
-                    need_manipul = true;
-                } else
-                {
-                    need_manipul = false;
                 }
             }
         });

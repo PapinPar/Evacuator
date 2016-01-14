@@ -30,14 +30,6 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="35dp"
-                android:background="@mipmap/manipulator"
-                android:layout_weight="0.8"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp" />
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="35dp"
                 android:background="@mipmap/posadka"
                 android:layout_weight="0.8"
                 android:layout_marginLeft="10dp"
@@ -71,29 +63,23 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorTextFont"
-                android:textSize="20dp"
-                android:text="Нужен манипулятор"
-                android:layout_weight="0.96"
-                android:gravity="center_vertical|left" />
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextFont"
                 android:textSize="20dp"
                 android:text="Низкая посадка"
-                android:layout_weight="0.96"
-                android:gravity="center_vertical|left" />
+                android:layout_weight="0.31"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextFont"
                 android:textSize="20dp"
                 android:text="Заблокирован руль"
-                android:layout_weight="0.96"
-                android:gravity="center_vertical|left" />
+                android:layout_weight="0.42"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +87,8 @@
                 android:textSize="20dp"
                 android:text="Заблокированные колеса"
                 android:layout_weight="0.96"
-                android:gravity="center_vertical|left" />
+                android:gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
         </LinearLayout>
@@ -116,30 +103,23 @@
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/check_1"
-                android:checked="false"
-                android:layout_weight="1"
-                android:onClick="onCheckboxClicked" />
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/check_2"
                 android:checked="false"
-                android:layout_weight="1"
-                android:onClick="onCheckboxClicked" />
+                android:layout_weight="1" />
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/check_3"
                 android:checked="false"
                 android:layout_weight="1"
-                android:onClick="onCheckboxClicked" />
+                android:layout_marginTop="10dp" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/spin_wheel"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:spinnerMode="dialog" />
 
         </LinearLayout>
 
@@ -158,14 +138,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:background="@color/colorTextButton"
         android:layout_weight="2">
 
+
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText2"
+            android:layout_height="match_parent"
+            android:inputType="textMultiLine"
+            android:id="@+id/coments"
             android:layout_weight="1"
             android:hint="Коментраий" />
     </LinearLayout>
@@ -231,12 +213,13 @@
             android:text="Оформить заказ"
             android:textSize="20dp"
             android:gravity="center"
-            android:id="@+id/button2"
+            android:id="@+id/create_order"
             android:theme="@android:style/Theme.Dialog"
             android:background="@drawable/shape_button"
             android:layout_marginTop="5dp"
             android:textColor="@color/colorTextButton"
-            android:layout_weight="0.01" />
+            android:layout_weight="0.01"
+            android:onClick="onClick" />
 
 
 

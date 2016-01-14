@@ -35,11 +35,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".DestinationActivity"></activity>
         <activity android:name=".Order.OrderNewActivity"></activity>
@@ -47,6 +43,13 @@
         <activity android:name=".Order.OrderInfoActivity"></activity>
         <activity android:name=".DriverCheckActivity"></activity>
         <activity android:name=".PaymentActivity"></activity>
+        <activity android:name=".spalch">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ValidationActivity">
 
         </activity>

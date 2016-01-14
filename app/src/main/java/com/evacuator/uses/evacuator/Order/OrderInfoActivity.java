@@ -140,9 +140,10 @@ public class OrderInfoActivity extends AppCompatActivity implements View.OnClick
         Call<Users> usersCall = api.get(user);
         usersCall.enqueue(new Callback<Users>() {
             @Override
-            public void onResponse(Response<Users> response, Retrofit retrofit) {
-                Users s = response.body();
-                orderId = String.valueOf(s.getId());
+            public void onResponse(Response<Users> response, Retrofit retrofit)
+            {
+            /*    Users s = response.body();
+                orderId = String.valueOf(s.getId());*/
                 valid.setVisibility(View.VISIBLE);
                 getCode.setText("Продолжить");
             }

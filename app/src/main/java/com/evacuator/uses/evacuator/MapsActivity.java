@@ -233,12 +233,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(this,DestinationActivity.class);
+    public void onClick(View v)
+    {
+        Intent getRes = new Intent();
+        getRes.putExtra("latlng",mylatlng);
+        getRes.putExtra("address",""+myAddress);
+        getRes.putExtra("id", "" + myId);
+        setResult(RESULT_OK,getRes);
+        finish();
+       /* Intent intent = new Intent(this,DestinationActivity.class);
         intent.putExtra("latlng",mylatlng);
         intent.putExtra("address",""+myAddress);
         intent.putExtra("id", "" + myId);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     @Override

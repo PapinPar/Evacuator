@@ -69,8 +69,7 @@ import retrofit.Retrofit;
 //home
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
-        PlaceSelectionListener, View.OnClickListener ,GoogleMap.OnCameraChangeListener,
-        GoogleMap.OnMapClickListener {
+        PlaceSelectionListener, View.OnClickListener ,GoogleMap.OnCameraChangeListener{
 
     private GoogleMap map;
     public Button confirmButton;
@@ -81,7 +80,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private final int MY_PERMISSIONS_REQUEST = 21;
     private boolean pirmission_granted = false;
     public MapDrawer drawer;
-    public TextView markerText;
 
 
     @Override
@@ -110,8 +108,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         AddressBroadcast broadcast = new AddressBroadcast(this);
         IntentFilter intFilt = new IntentFilter("MY_BROADCAST_ADDRESS");
         registerReceiver(broadcast, intFilt);
-
-        markerText = (TextView)findViewById(R.id.markerText);
     }
 
     private void checkPirmission() {
@@ -154,7 +150,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        map.setOnMapClickListener(this);
         map.setOnCameraChangeListener(this);
         drawer = new MapDrawer(map,this);
         initMap();
@@ -225,6 +220,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mylatlng = place.getLatLng();
         myId = place.getId();
         map.clear();
+        drawer.cameraMove(mylatlng);
         Intent intent = new Intent(this, AddressService.class);
         intent.putExtra("lng",mylatlng.longitude);
         intent.putExtra("lat",mylatlng.latitude);
@@ -282,10 +278,5 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
        // if(markerText!=null)
 
         Log.d("cameara",cameraPosition.target.toString());
-    }
-
-    @Override
-    public void onMapClick(LatLng latLng) {
-        markerText.setVisibility(View.INVISIBLE);
     }
 }

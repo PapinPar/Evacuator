@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -31,6 +32,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 
 import com.google.android.gms.maps.model.Polyline;
@@ -53,7 +55,8 @@ import retrofit.Retrofit;
 /**
  * Created by root on 06.01.16.
  */
-public class DestinationActivity extends AppCompatActivity implements OnMapReadyCallback,PlaceSelectionListener, View.OnClickListener {
+public class DestinationActivity extends AppCompatActivity implements OnMapReadyCallback,
+        PlaceSelectionListener, View.OnClickListener,GoogleMap.OnCameraChangeListener{
     public LatLng destlatlang;
     public LatLng mylatlng;
     public String myAddress;
@@ -74,6 +77,14 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
         confirmButton = (Button)findViewById(R.id.confirmBut);
         confirmButton.setOnClickListener(this);
+        ImageButton imgBut = (ImageButton) findViewById(R.id.dirButton);
+        imgBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                placeSelecteed();
+            }
+        });
+
         Intent intent  = getIntent();
 
 
@@ -100,24 +111,27 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
 
     }
 
-
     @Override
     public void onClick(View v) {
 
         if(destlatlang!=null && destAddress!=null ){
-            Intent intent = new Intent(this,OrderNewActivity.class);
-            intent.putExtra("mylatlng",mylatlng);
-            intent.putExtra("myAddress",""+myAddress);
-            intent.putExtra("myId",""+myId);
+            if(pathTime==0&&pathValue==0) {
+                placeSelecteed();
+            }
+            Intent intent = new Intent(this, OrderNewActivity.class);
+            intent.putExtra("mylatlng", mylatlng);
+            intent.putExtra("myAddress", "" + myAddress);
+            intent.putExtra("myId", "" + myId);
 
-            intent.putExtra("destlatlng",""+destlatlang);
-            intent.putExtra("destAddress",""+destAddress);
-            intent.putExtra("destId",""+destId);
+            intent.putExtra("destlatlng", "" + destlatlang);
+            intent.putExtra("destAddress", "" + destAddress);
+            intent.putExtra("destId", "" + destId);
 
-            intent.putExtra("path",pathValue/1000);
-            intent.putExtra("pathTime",pathTime);
+            intent.putExtra("path", pathValue / 1000);
+            intent.putExtra("pathTime", pathTime);
 
             startActivity(intent);
+
         }
     }
 
@@ -125,11 +139,14 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
 
         map = googleMap;
+        map.setOnCameraChangeListener(this);
         drawer = new MapDrawer(map,this);
         initMap();
-
+        drawer.cameraMove(mylatlng);
         drawer.addMarker(mylatlng, myAddress, R.mipmap.pincar);
-
+        drawer.addMarker(mylatlng, myAddress, -111222111);
+        drawer.redrawMarker(mylatlng,0);
+      //  drawer.redrawMarker(mylatlng,1);
     }
 
     @Override
@@ -139,7 +156,8 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         destId = place.getId();
         map.clear();
         drawer.addMarker(mylatlng,myAddress,R.mipmap.pincar);
-        drawer.addMarker(destlatlang, destAddress, -111222111);
+        //drawer.addMarker(destlatlang, destAddress, -111222111);
+        drawer.cameraMove(destlatlang);
         confirmButton.setText(destAddress);
         pathValue = 0.0;
 
@@ -148,6 +166,15 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
         intent.putExtra("lat", destlatlang.latitude);
         startService(intent);
 
+        request();
+    }
+    public void placeSelecteed(){
+       // map.clear();
+       // drawer.addMarker(mylatlng,myAddress,R.mipmap.pincar);
+        //drawer.redrawMarker(mylatlng,0);
+        drawer.addMarker(destlatlang, destAddress, -111222111);
+        confirmButton.setText(destAddress);
+        pathValue = 0.0;
         request();
     }
 
@@ -275,5 +302,14 @@ public class DestinationActivity extends AppCompatActivity implements OnMapReady
             poly.add(position);
         }
         return poly;
+    }
+
+    @Override
+    public void onCameraChange(CameraPosition cameraPosition) {
+
+        drawer.redrawMarker(cameraPosition.target,1);
+        destlatlang=cameraPosition.target;
+
+        Log.d("cameara",cameraPosition.target.toString());
     }
 }

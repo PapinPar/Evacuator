@@ -34,10 +34,12 @@ public class AddressBroadcast extends BroadcastReceiver {
         String address = intent.getStringExtra("address");
 
        if(activity ==null) {
-           destActivity.myAddress = address;
+           destActivity.destAddress = address;
            destActivity.confirmButton.setText(address);
-           drawer = destActivity.drawer;
-           drawer.bindAddressLast(address);
+         //  destActivity.placeSelecteed();
+           //drawer = destActivity.drawer;
+          // drawer.bindAddressLast(address);
+           //activity.markerText.setVisibility(View.VISIBLE);
        }
         else
        {
@@ -45,8 +47,7 @@ public class AddressBroadcast extends BroadcastReceiver {
            activity.confirmButton.setText(address);
          //  drawer = activity.drawer;
 //           drawer.bindAddressLast(address);
-           activity.markerText.setText(address);
-           activity.markerText.setVisibility(View.VISIBLE);
+          // activity.markerText.setVisibility(View.VISIBLE);
        }
 
        //drawer.addMarker(mylatlng,address, R.mipmap.pincar);

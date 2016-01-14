@@ -65,6 +65,13 @@
             android:layout_height="match_parent"
             tools:context="com.example.root.myapplication.MapsActivity" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/pincar"
+            android:id="@+id/imageMarker" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,32 +84,6 @@
             android:layout_gravity="center_horizontal|bottom"
             android:onClick="onClick"
             android:background="@drawable/shape_button"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Small Text"
-                android:id="@+id/markerText"
-                android:layout_gravity="center"
-                android:background="#ffffff"
-                android:visibility="invisible"
-                android:textAlignment="center" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/pincar"
-                android:id="@+id/imageMarker" />
-
-        </LinearLayout>
 
 
     </FrameLayout>

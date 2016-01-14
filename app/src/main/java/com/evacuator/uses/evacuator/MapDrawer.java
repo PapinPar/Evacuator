@@ -51,8 +51,6 @@ public class MapDrawer {
 
     }
     public void drawMarker(MarkerOptions option){
-
-
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(option.getPosition())
                 .zoom(15)
@@ -63,17 +61,16 @@ public class MapDrawer {
     public void redrawMarker(LatLng latlng, int id){
         if(markers.size()!=0) {
             MarkerOptions option = markers.get(id);
-            if(option.getPosition().longitude !=latlng.longitude && option.getPosition().latitude !=latlng.latitude) {
+            //if(option.getPosition().longitude !=latlng.longitude && option.getPosition().latitude !=latlng.latitude) {
                 option.position(latlng);
                 Intent intent = new Intent(context, AddressService.class);
                 intent.putExtra("lat", latlng.latitude);
                 intent.putExtra("lng", latlng.longitude);
                 context.startService(intent);
                 map.clear();
-              /*  for (MarkerOptions options : markers) {
-                    map.addMarker(options);
-                }*/
-            }
+                if(markers.size()>1) {
+                    map.addMarker(markers.get(0));
+                }
         }
     }
 
